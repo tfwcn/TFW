@@ -14,5 +14,10 @@ namespace MVC5test.Controllers
         {
             return View();
         }
+
+        public ActionResult Hello()
+        {
+            return Content("Hello");
+        }
 	}
 }
