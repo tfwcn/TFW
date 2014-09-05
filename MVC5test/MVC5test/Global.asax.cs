@@ -11,8 +11,8 @@ namespace MVC5test
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            AreaRegistration.RegisterAllAreas();//1
+            RouteConfig.RegisterRoutes(RouteTable.Routes);//2
         }
     }
 }
