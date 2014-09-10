@@ -1,3 +1,9 @@
 /MVC5test/MVC5test/bin
 /MVC5test/MVC5test/obj
 /MVC5test/*.suo
+/MVC5test/DBHelper/bin
+/MVC5test/DBHelper/obj
+/MVC5test/DAL/obj
+/MVC5test/DAL/bin
+/MVC5test/Common/obj
+/MVC5test/Common/bin
