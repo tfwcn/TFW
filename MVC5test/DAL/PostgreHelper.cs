@@ -16,7 +16,7 @@ namespace DAL
         private DbConnection GetConnection()
         {
             string connectionString = "Server=localhost;Port=5432;User Id=postgres;"
-                + "Password=SA123; Database=databaseName;"
+                + "Password=sa123; Database=TESTDB;"
                 + "CommandTimeout=0;ConnectionLifeTime=0;";
             NpgsqlConnection conn = new NpgsqlConnection(connectionString);
             return conn;
@@ -41,6 +41,44 @@ namespace DAL
             {
                 conn.Open();
                 return com.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                //if (conn != null)
+                //    conn.Close();
+            }
+        }
+        public int RunSQL(string cmdText, DbParameter[] paramenters)
+        {
+            DbConnection conn = GetConnection();
+            DbCommand com = GetCommand(cmdText, conn);
+            try
+            {
+                conn.Open();
+                return com.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+        }
+        public object GetObject(string cmdText, DbParameter[] paramenters)
+        {
+            DbConnection conn = GetConnection();
+            DbCommand com = GetCommand(cmdText, conn);
+            try
+            {
+                conn.Open();
+                return com.ExecuteScalar();
             }
             catch (Exception ex)
             {

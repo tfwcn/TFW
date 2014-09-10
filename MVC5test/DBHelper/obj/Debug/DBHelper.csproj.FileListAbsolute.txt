@@ -1,0 +1,10 @@
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\bin\Debug\DBHelper.dll
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\bin\Debug\DBHelper.pdb
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\bin\Debug\Mono.Security.dll
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\bin\Debug\Npgsql.dll
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\bin\Debug\Npgsql.pdb
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\bin\Debug\Npgsql.xml
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\bin\Debug\zh-CN\Npgsql.resources.dll
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\obj\Debug\DBHelper.csprojResolveAssemblyReference.cache
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\obj\Debug\DBHelper.dll
+D:\Document\a\webfile\GitClone\TFW\MVC5test\DBHelper\obj\Debug\DBHelper.pdb
