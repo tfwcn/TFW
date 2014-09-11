@@ -53,9 +53,6 @@
   <ItemGroup>
     <Content Include="DLL\Mono.Security.dll" />
     <Content Include="DLL\Npgsql.dll" />
-    <Content Include="DLL\Npgsql.pdb" />
-    <Content Include="DLL\Npgsql.xml" />
-    <Content Include="DLL\zh-CN\Npgsql.resources.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

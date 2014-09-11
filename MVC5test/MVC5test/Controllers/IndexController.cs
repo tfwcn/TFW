@@ -7,7 +7,7 @@ using Common;
 
 namespace MVC5test.Controllers
 {
-    public class IndexController : Controller
+    public class IndexController : BaseController
     {
         private DAL.PostgreHelper bllPG = new DAL.PostgreHelper();
         //
@@ -32,7 +32,7 @@ namespace MVC5test.Controllers
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {
@@ -45,8 +45,8 @@ namespace MVC5test.Controllers
         public ActionResult Submit(string Pass)
         {
             string msg = "False";
-            try
-            {
+            //try
+            //{
                 if (Pass == "123")
                 {
                     msg = "True";
@@ -59,11 +59,12 @@ namespace MVC5test.Controllers
                         bllPG.RunSQL("INSERT INTO \"TUSER\"(\"TNAME\")VALUES ('A" + i + "')", null);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-
-            }
+            //    throw new Exception("EEEEE1");
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
             return Redirect("~/Index/Hello?msg=" + msg);
         }
 	}

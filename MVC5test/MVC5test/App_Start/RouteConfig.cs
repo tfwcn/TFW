@@ -18,6 +18,11 @@ namespace MVC5test
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Error",
+                url: "Help/Error/"
+            );
         }
     }
 }
