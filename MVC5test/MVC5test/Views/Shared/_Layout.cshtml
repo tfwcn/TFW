@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link type="text/css" rel="stylesheet" href="~/Content/Site.css" />
-    <script src="~/Scripts/jquery.min.js"></script>
-    @*<script src="~/Scripts/jquery.easyui.min.js"></script>*@
-    @*<script src="~/Scripts/easyloader.js"></script>*@
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.easyui.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/easyloader.js")"></script>
     <script>
-        //easyloader.base = '/Scripts/';    // 设置easyui根目录
+        easyloader.base = '@Url.Content("~/Scripts/easyui/")';    // 设置easyui根目录
     </script>
     @RenderSection("head", false)
 </head>
