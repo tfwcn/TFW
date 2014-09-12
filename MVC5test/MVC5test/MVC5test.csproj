@@ -84,11 +84,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\easyloader.js" />
-    <Content Include="Scripts\easyui\changelog.txt" />
-    <Content Include="Scripts\easyui\easyloader.js" />
-    <Content Include="Scripts\easyui\jquery.easyui.min.js" />
-    <Content Include="Scripts\easyui\jquery.min.js" />
-    <Content Include="Scripts\easyui\licence_gpl.txt" />
     <Content Include="Scripts\easyui\locale\easyui-lang-af.js" />
     <Content Include="Scripts\easyui\locale\easyui-lang-am.js" />
     <Content Include="Scripts\easyui\locale\easyui-lang-ar.js" />
@@ -152,7 +147,6 @@
     <Content Include="Scripts\easyui\plugins\jquery.treegrid.js" />
     <Content Include="Scripts\easyui\plugins\jquery.validatebox.js" />
     <Content Include="Scripts\easyui\plugins\jquery.window.js" />
-    <Content Include="Scripts\easyui\readme.txt" />
     <Content Include="Scripts\easyui\src\easyloader.js" />
     <Content Include="Scripts\easyui\src\jquery.accordion.js" />
     <Content Include="Scripts\easyui\src\jquery.calendar.js" />
@@ -445,7 +439,6 @@
     <Content Include="Scripts\jquery-1.11.1.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\jquery.easyui.min.js" />
-    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
