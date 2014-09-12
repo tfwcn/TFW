@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Runtime.Serialization;
 using Common;
 
 namespace MVC5test.Controllers
@@ -50,7 +51,7 @@ namespace MVC5test.Controllers
                 if (Pass == "123")
                 {
                     msg = "True";
-                    string TNAME = bllPG.GetObject("select max(\"TNAME\") from \"TUSER\"", null) as string;
+                    string TNAME = bllPG.GetObject("select \"TNAME\" from \"TUSER\" order by \"TSEQ\" desc limit 1", null) as string;
                     int num = 1;
                     if (!TNAME.IsVoid())
                         num = Convert.ToInt32(TNAME.Substring(1)) + 1;
@@ -66,6 +67,33 @@ namespace MVC5test.Controllers
             //    throw ex;
             //}
             return Redirect("~/Index/Hello?msg=" + msg);
+        }
+
+        public ActionResult GetJSON()
+        {
+            List<Models.TUSERInfo> tmpListTUSER = new List<Models.TUSERInfo>();
+            System.Data.Common.DbDataReader dr = null;
+            try
+            {
+                dr = bllPG.GetDataReader("select * from \"TUSER\"", null);
+                while (dr.Read())
+                {
+                    Models.TUSERInfo tmpTUSER = new Models.TUSERInfo();
+                    tmpTUSER.TSEQ = Convert.ToInt32(dr["TSEQ"]);
+                    tmpTUSER.TNAME = dr["TNAME"].ToString();
+                    tmpListTUSER.Add(tmpTUSER);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (dr != null)
+                    dr.Close();
+            }
+            return Json(tmpListTUSER);
         }
 	}
 }

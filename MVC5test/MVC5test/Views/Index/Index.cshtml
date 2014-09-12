@@ -3,9 +3,23 @@
 }
 @section head{
     <script>
-        //easyloader.load('messager', function () {        // 载入特定模块
-        //    $.messager.alert('Title', 'load ok');
-        //});
+        easyloader.load('messager', function () {        // 载入特定模块
+            $.messager.alert('Title', 'load ok');
+        });
+        $(function () {
+            $('#dg').datagrid({
+                url: '@Url.Content("~/Index/GetJSON")',
+                columns: [[
+                    { field: 'TSEQ', title: 'TSEQ', width: 100, align:'center' },
+                    { field: 'TNAME', title: 'TNAME', width: 200 }
+                ]],
+                pagination: true,
+                rownumbers: true,
+                striped: true,//设置为true将交替显示行背景。
+                singleSelect: true//设置为true将只允许选择一行。
+            });
+        });
+
     </script>
 }
 
@@ -15,4 +29,16 @@
     TNAME:<input type="text" name="Pass" value="" />
     <button type="submit">Submit</button>
 </form>
+<div id="tt" class="easyui-tabs" style="width: 100%; height: 500px;">
+    <div title="Tab1">
+        <table id="dg"></table>
+    </div>
+    <div title="Tab2" closable="true" style="overflow: auto; padding: 20px;">
+        tab2
+    </div>
+    <div title="Tab3" iconcls="icon-reload" closable="true" style="padding: 20px;">
+        tab3
+    </div>
+</div>
+
 
