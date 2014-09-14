@@ -8,20 +8,87 @@ using Npgsql;
 
 namespace DBHelper
 {
-    public class PostgresHelper
+    /// <summary>
+    /// 数据库操作基类(for PostgreSQL)
+    /// </summary>
+    public class PostgreHelper
     {
         private DbConnection GetConnection()
         {
-            DbConnection conn = null;
+            string connectionString = "Server=localhost;Port=5432;User Id=postgres;"
+                + "Password=sa123; Database=TESTDB;"
+                + "CommandTimeout=0;ConnectionLifeTime=0;";
+            NpgsqlConnection conn = new NpgsqlConnection(connectionString);
             return conn;
         }
-        public DbDataReader GetDataReader()
+        private DbCommand GetCommand(string cmdText, DbConnection connection)
         {
-            NpgsqlConnection conn = GetConnection() as NpgsqlConnection;
-            conn.Open();
-            DbCommand com = new NpgsqlCommand("",conn);
-            DbDataReader dr = com.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            return dr;
+            NpgsqlConnection conn = connection as NpgsqlConnection;
+            NpgsqlCommand com = new NpgsqlCommand(cmdText, conn);
+            return com;
+        }
+        private DbCommand GetCommand(string cmdText, DbConnection connection, NpgsqlTransaction transaction)
+        {
+            NpgsqlConnection conn = connection as NpgsqlConnection;
+            NpgsqlCommand com = new NpgsqlCommand(cmdText, conn, transaction);
+            return com;
+        }
+        public DbDataReader GetDataReader(string cmdText, DbParameter[] paramenters)
+        {
+            DbConnection conn = GetConnection();
+            DbCommand com = GetCommand(cmdText, conn);
+            try
+            {
+                conn.Open();
+                return com.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                //if (conn != null)
+                //    conn.Close();
+            }
+        }
+        public int RunSQL(string cmdText, DbParameter[] paramenters)
+        {
+            DbConnection conn = GetConnection();
+            DbCommand com = GetCommand(cmdText, conn);
+            try
+            {
+                conn.Open();
+                return com.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+        }
+        public object GetObject(string cmdText, DbParameter[] paramenters)
+        {
+            DbConnection conn = GetConnection();
+            DbCommand com = GetCommand(cmdText, conn);
+            try
+            {
+                conn.Open();
+                return com.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
         }
     }
 }

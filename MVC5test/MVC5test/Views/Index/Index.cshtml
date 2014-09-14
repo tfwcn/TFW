@@ -7,6 +7,7 @@
             $.messager.alert('Title', 'load ok');
         });
         $(function () {
+            //数据表
             $('#dg').datagrid({
                 url: '@Url.Content("~/Index/GetJSON")',
                 columns: [[
@@ -14,9 +15,19 @@
                     { field: 'TNAME', title: 'TNAME', width: 200 }
                 ]],
                 pagination: true,
+                pageSize: 10, //页容量，必须和pageList对应起来，否则会报错 
+                pageNumber: 1, //默认显示第几页 
+                pageList: [10, 25, 50],
                 rownumbers: true,
                 striped: true,//设置为true将交替显示行背景。
                 singleSelect: true//设置为true将只允许选择一行。
+            });
+            //分页
+            var pager = $('#dg').datagrid('getPager');
+            $(pager).pagination({
+                beforePageText: '第',
+                afterPageText: '页 共 {pages} 页',
+                displayMsg: '当前显示 {from} - {to} 条记录  &nbsp;&nbsp;&nbsp;共 {total} 条记录'
             });
         });
 
