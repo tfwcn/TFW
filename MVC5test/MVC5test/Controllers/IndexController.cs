@@ -69,14 +69,19 @@ namespace MVC5test.Controllers
             return Redirect("~/Index/Hello?msg=" + msg);
         }
 
-        public ActionResult GetJSON(int? page, int? rows)
+        public ActionResult GetJSON(int? page, int? rows, string TSEQ)
         {
             Dictionary<string, object> jsonObj = new Dictionary<string, object>();
             List<Models.TUSERInfo> tmpListTUSER = new List<Models.TUSERInfo>();
             System.Data.Common.DbDataReader dr = null;
             try
             {
-                dr = bllPG.GetDataReader("select * from \"TUSER\" limit " + rows + " offset " + (page-1) * rows, null);
+                string whereStr = "";
+                if (!TSEQ.IsVoid())
+                {
+                    whereStr += " and \"TSEQ\">" + TSEQ + " ";
+                }
+                dr = bllPG.GetDataReader("select * from \"TUSER\" where 1=1 " + whereStr + " limit " + rows + " offset " + (page - 1) * rows, null);
                 while (dr.Read())
                 {
                     Models.TUSERInfo tmpTUSER = new Models.TUSERInfo();
@@ -84,7 +89,7 @@ namespace MVC5test.Controllers
                     tmpTUSER.TNAME = dr["TNAME"].ToString();
                     tmpListTUSER.Add(tmpTUSER);
                 }
-                int rowCount = Convert.ToInt32(bllPG.GetObject("select count(0) from \"TUSER\"", null));
+                int rowCount = Convert.ToInt32(bllPG.GetObject("select count(0) from \"TUSER\" where 1=1 " + whereStr, null));
                 jsonObj.Add("total", rowCount);
                 jsonObj.Add("rows", tmpListTUSER);
             }

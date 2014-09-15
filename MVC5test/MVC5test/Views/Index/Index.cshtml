@@ -3,15 +3,15 @@
 }
 @section head{
     <script>
-        easyloader.load('messager', function () {        // 载入特定模块
-            $.messager.alert('Title', 'load ok');
-        });
+        //easyloader.load('messager', function () {        // 载入特定模块
+        //    $.messager.alert('Title', 'load ok');
+        //});
         $(function () {
             //数据表
             $('#dg').datagrid({
-                url: '@Url.Content("~/Index/GetJSON")',
+                //url: '@Url.Content("~/Index/GetJSON")',
                 columns: [[
-                    { field: 'TSEQ', title: 'TSEQ', width: 100, align:'center' },
+                    { field: 'TSEQ', title: 'TSEQ', width: 100, align: 'center' },
                     { field: 'TNAME', title: 'TNAME', width: 200 }
                 ]],
                 pagination: true,
@@ -20,7 +20,11 @@
                 pageList: [10, 25, 50],
                 rownumbers: true,
                 striped: true,//设置为true将交替显示行背景。
-                singleSelect: true//设置为true将只允许选择一行。
+                singleSelect: true,//设置为true将只允许选择一行。
+                //queryParams: { TSEQ: '10' },
+                onBeforeLoad: function () {
+                    //$(this).datagrid('options').queryParams = { TSEQ: '10' };
+                }
             });
             //分页
             var pager = $('#dg').datagrid('getPager');
@@ -30,7 +34,12 @@
                 displayMsg: '当前显示 {from} - {to} 条记录  &nbsp;&nbsp;&nbsp;共 {total} 条记录'
             });
         });
-
+        function LoadData() {
+            $('#dg').datagrid('options').queryParams = $("#tf").serializeArray();
+            $('#dg').datagrid('options').url = '@Url.Content("~/Index/GetJSON")';
+            $('#dg').datagrid('load');
+            return true;
+        }
     </script>
 }
 
@@ -38,6 +47,11 @@
 <a href="~/Index/Hello/">Hello</a>
 <form action="~/Index/Submit/">
     TNAME:<input type="text" name="Pass" value="" />
+    <button type="submit">Submit</button>
+</form>
+<button onclick="LoadData()">Hello</button>
+<form id="tf" action="LoadData(); return true;">
+    TSEQ:<input type="text" name="TSEQ" value="" />
     <button type="submit">Submit</button>
 </form>
 <div id="tt" class="easyui-tabs" style="width: 100%; height: 500px;">
