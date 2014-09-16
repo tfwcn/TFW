@@ -79,7 +79,7 @@ namespace MVC5test.Controllers
                 string whereStr = "";
                 if (!TSEQ.IsVoid())
                 {
-                    whereStr += " and \"TSEQ\">" + TSEQ + " ";
+                    whereStr += " and \"TSEQ\"=" + TSEQ + " ";
                 }
                 dr = bllPG.GetDataReader("select * from \"TUSER\" where 1=1 " + whereStr + " limit " + rows + " offset " + (page - 1) * rows, null);
                 while (dr.Read())

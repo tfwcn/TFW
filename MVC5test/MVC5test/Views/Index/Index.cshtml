@@ -35,10 +35,19 @@
             });
         });
         function LoadData() {
-            $('#dg').datagrid('options').queryParams = $("#tf").serializeArray();
+            $('#dg').datagrid('options').queryParams = FromToJSON($("#tf"));
             $('#dg').datagrid('options').url = '@Url.Content("~/Index/GetJSON")';
             $('#dg').datagrid('load');
-            return true;
+            return false;
+        }
+        function FromToJSON(fromObj) {
+            //debugger;
+            var params = fromObj.serializeArray();
+            var paramsObj = new Object();
+            for(var i=0;i<params.length;i++){
+                paramsObj[params[i].name] = params[i].value;
+            }
+            return paramsObj;
         }
     </script>
 }
@@ -46,11 +55,10 @@
 <h2>Index</h2>
 <a href="~/Index/Hello/">Hello</a>
 <form action="~/Index/Submit/">
-    TNAME:<input type="text" name="Pass" value="" />
-    <button type="submit">Submit</button>
+    Pass:<input type="text" name="Pass" value="" />
+    <button type="submit">Add</button>
 </form>
-<button onclick="LoadData()">Hello</button>
-<form id="tf" action="LoadData(); return true;">
+<form id="tf" onsubmit="return LoadData();">
     TSEQ:<input type="text" name="TSEQ" value="" />
     <button type="submit">Submit</button>
 </form>
