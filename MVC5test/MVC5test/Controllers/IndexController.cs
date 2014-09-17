@@ -21,26 +21,8 @@ namespace MVC5test.Controllers
         public ActionResult Hello(string msg)
         {
             string retStr = "";
-            retStr += String.Format("{0}</br>", msg);
-            System.Data.Common.DbDataReader dr = null;
-            try
-            {
-                dr = bllPG.GetDataReader("select * from \"TUSER\" ", null);
-                while (dr.Read())
-                {
-                    retStr += String.Format("{0} {1}</br>", dr["TSEQ"], dr["TNAME"]);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (dr != null)
-                    dr.Close();
-            }
-            return Content(retStr);//test1
+            retStr += String.Format("Hello,{0}", msg);
+            return Content(retStr);
         }
 
         public ActionResult Submit(string Pass)

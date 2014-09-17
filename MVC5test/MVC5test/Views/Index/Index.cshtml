@@ -56,6 +56,7 @@
             });
             return false;
         }
+        /*表格轉JSON對象*/
         function FromToJSON(fromObj) {
             //debugger;
             var params = fromObj.serializeArray();
@@ -64,6 +65,66 @@
                 paramsObj[params[i].name] = params[i].value;
             }
             return paramsObj;
+        }
+        /*AJAX*/
+        var isAjax = false;
+        function AjaxLoad(url, fData, fuBeforeSend, fuSuccess, fuError, fuComplete) {
+            if (isAjax) {
+                alert('請耐心等待上一次的操作完成！');
+                return false;
+            }
+
+            isAjax = true;
+            $.ajax(new function () {
+                this.dataType = "html";
+                this.type = "post";
+                this.url = url;
+                this.cache = false;//緩存
+                this.data = fData;
+                //this.timeout = 60;//超時
+                //this.async = true;//異步
+                //this.username = "";//用于响应HTTP访问认证请求的用户名。
+                //this.password = "";//用于响应HTTP访问认证请求的密码。
+                this.beforeSend = function (req) {
+                    if ($.isFunction(fuBeforeSend)) {
+                        fuBeforeSend(req);
+                    }
+                };
+                this.success = function (data, msg) {
+                    if ($.isFunction(fuSuccess)) {
+                        fuSuccess(data, msg);
+                    }
+                };
+                this.error = function (req, msg, ex) {
+                    isAjax = false;
+                    if ($.isFunction(fuError)) {
+                        //req.statusText
+                        fuError(req, msg, ex);
+                    }
+                };
+                this.complete = function (req, msg) {
+                    isAjax = false;
+                    if ($.isFunction(fuComplete)) {
+                        fuComplete(req, msg);
+                    }
+                };
+            });
+        } //*/
+        function testAJAX() {
+            var fuBeforeSend = function (req) {
+                //alert("fuBeforeSend");
+            };
+            var fuSuccess = function (data, msg) {
+                alert("fuSuccess:" + data);
+                CloseWindow();
+            };
+            var fuError = function (req, msg, ex) {
+                //alert("fuError:" + msg);
+            };
+            var fuComplete = function (req, msg) {
+                //alert("fuComplete:" + msg);
+            };
+            AjaxLoad("/Index/Hello", FromToJSON($("#tf2")), fuBeforeSend, fuSuccess, fuError, fuComplete);
         }
     </script>
 }
@@ -83,7 +144,7 @@
         <table id="dg"></table>
     </div>
     <div title="Tab2" closable="true" style="overflow: auto; padding: 20px;">
-        tab2
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="OpenWindow(); return false;">窗口</a>
     </div>
     <div title="Tab3" iconcls="icon-reload" closable="true" style="padding: 20px;">
         tab3
@@ -92,11 +153,13 @@
 <div id="win" iconcls="icon-save" title="My Window">
     <div class="easyui-layout" data-options="fit:true">
         <div data-options="region:'center',border:false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
-            test
+            <form id="tf2" onsubmit="return LoadData();">
+                msg:<input type="text" name="msg" value="" />
+            </form>
         </div>
         <div data-options="region:'south',border:false" style="text-align: right; padding: 5px 10px;">
-            <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:alert('ok')">確 定</a>
-            <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="CloseWindow();">取 消</a>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="testAJAX(); return false;">確 定</a>
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="CloseWindow(); return false;">取 消</a>
         </div>
     </div>
 </div>
