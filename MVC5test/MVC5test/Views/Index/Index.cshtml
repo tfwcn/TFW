@@ -49,6 +49,7 @@
             //確認窗口
             $.messager.confirm('系統提示', '確認查詢?', function (r) {
                 if (r) {
+                    //条件查询
                     $('#dg').datagrid('options').queryParams = FromToJSON($("#tf"));
                     $('#dg').datagrid('options').url = '@Url.Content("~/Index/GetJSON")';
                     $('#dg').datagrid('load');
