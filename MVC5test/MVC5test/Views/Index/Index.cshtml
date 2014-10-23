@@ -33,6 +33,8 @@
                 afterPageText: '页 共 {pages} 页',
                 displayMsg: '当前显示 {from} - {to} 条记录  &nbsp;&nbsp;&nbsp;共 {total} 条记录'
             });
+            //獲取屬性
+            GetAttributes();
         });
         function OpenWindow() {
             //彈出窗口
@@ -127,6 +129,21 @@
             };
             AjaxLoad("/Index/Hello", FromToJSON($("#tf2")), fuBeforeSend, fuSuccess, fuError, fuComplete);
         }
+        function GetAttributes() {
+            var fuBeforeSend = function (req) {
+                //alert("fuBeforeSend");
+            };
+            var fuSuccess = function (data, msg) {
+                $('#Attributes').html(data);
+            };
+            var fuError = function (req, msg, ex) {
+                //alert("fuError:" + msg);
+            };
+            var fuComplete = function (req, msg) {
+                //alert("fuComplete:" + msg);
+            };
+            AjaxLoad("/Index/GetAttributes", null, fuBeforeSend, fuSuccess, fuError, fuComplete);
+        }
     </script>
 }
 
@@ -164,5 +181,8 @@
         </div>
     </div>
 </div>
-
+<form action="~/Index/AttributesSubmit/">
+    <div id="Attributes"></div>
+    <button type="submit">Submit</button>
+</form>
 

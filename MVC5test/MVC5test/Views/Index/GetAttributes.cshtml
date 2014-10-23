@@ -1,0 +1,72 @@
+﻿@model MVC5test.Models.Attribute
+@{
+    Layout = null;
+}
+<table>
+    @foreach (string name in Model.data.Keys)
+    {
+        <tr>
+            <td>@name:</td>
+            @if (Model.data[name] == 0)
+            {
+                <td>@Html.TextBox("PA_" + name, "整形", new { type = "text" })</td>
+            }
+            else if (Model.data[name] == 1)
+            {
+                <td>@Html.TextBox("PA_" + name, "數字類型", new { type = "text" })</td>
+            }
+            else
+            {
+                <td>@Html.TextBox("PA_" + name, "字符串", new { type = "text" })</td>
+            }
+        </tr>
+    }
+</table>
+<div class="attributes">
+    <ul>
+        @foreach (string name in Model.data.Keys)
+        {
+            <li>
+                <span class="name">@name:</span>
+                @if (Model.data[name] == 0)
+                {
+                    <span class="value">@Html.TextBox("PA_" + name, "整形", new { type = "text" })</span>
+                }
+                else if (Model.data[name] == 1)
+                {
+                    <span class="value">@Html.TextBox("PA_" + name, "數字類型", new { type = "text" })</span>
+                }
+                else
+                {
+                    <span class="value">@Html.TextBox("PA_" + name, "字符串", new { type = "text" })</span>
+                }
+            </li>
+        }
+    </ul>
+</div>
+<div class="sku">
+    <div class="name">規格1:</div>
+    <ul>
+        <li>
+            <input type="checkbox" value="a1" />
+            111</li>
+        <li>
+            <input type="checkbox" value="a2" />
+            22</li>
+        <li>
+            <input type="checkbox" value="a3" />
+            33</li>
+        <li>
+            <input type="checkbox" value="a4" />
+            4</li>
+        <li>
+            <input type="checkbox" value="a5" />
+            5</li>
+        <li>
+            <input type="checkbox" value="a6" />
+            6</li>
+        <li>
+            <input type="checkbox" value="a7" />
+            7</li>
+    </ul>
+</div>
