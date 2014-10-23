@@ -369,6 +369,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attribute.cs" />
+    <Compile Include="Models\EX.cs" />
     <Compile Include="Models\TUSERInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -380,6 +382,7 @@
     <Content Include="Views\Help\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery-1.11.1.min.map" />
+    <Content Include="Views\Index\GetAttributes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

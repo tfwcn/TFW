@@ -1,5 +1,5 @@
 D:\Document\a\webfile\GitClone\TFW\MVC5test\Common\bin\Debug\Common.dll
 D:\Document\a\webfile\GitClone\TFW\MVC5test\Common\bin\Debug\Common.pdb
-D:\Document\a\webfile\GitClone\TFW\MVC5test\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 D:\Document\a\webfile\GitClone\TFW\MVC5test\Common\obj\Debug\Common.dll
 D:\Document\a\webfile\GitClone\TFW\MVC5test\Common\obj\Debug\Common.pdb
+D:\Document\a\webfile\GitClone\TFW\MVC5test\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
