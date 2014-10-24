@@ -103,6 +103,7 @@ namespace MVC5test.Controllers
             vals += Request["PA_n1"] + ",";
             vals += Request["PA_n2"] + ",";
             vals += Request["PA_n3"] + ",";
+            vals += Request["SV_規格1"] + ",";
             List<SqlParameter> paras = new List<SqlParameter>();
             string test = string.Join(",", ValuesToWhere("p1", new string[] { "aa", "ss", "dd" }, paras));
             return Content(vals);

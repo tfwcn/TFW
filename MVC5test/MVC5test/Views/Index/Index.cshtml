@@ -134,7 +134,10 @@
                 //alert("fuBeforeSend");
             };
             var fuSuccess = function (data, msg) {
-                $('#Attributes').html(data);
+                //$('#Attributes').html(data);
+                var targetObj = $(data).appendTo("#Attributes");
+                $.parser.parse(targetObj);
+
             };
             var fuError = function (req, msg, ex) {
                 //alert("fuError:" + msg);
