@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-<table>
+@*<table>
     @foreach (string name in Model.data.Keys)
     {
         <tr>
@@ -21,7 +21,7 @@
             }
         </tr>
     }
-</table>
+</table>*@
 <div class="attributes">
     <ul>
         @foreach (string name in Model.data.Keys)
@@ -34,7 +34,7 @@
                 }
                 else if (Model.data[name] == 1)
                 {
-                    <span class="value">@Html.TextBox("PA_" + name, "數字類型", new { type = "text" })</span>
+                    <span class="value"><input name="PA_@name" class="easyui-numberspinner" data-options="min:10,max:100,required:true" style="width:80px;"></span>
                 }
                 else
                 {
@@ -48,25 +48,25 @@
     <div class="name">規格1:</div>
     <ul>
         <li>
-            <input type="checkbox" value="a1" />
+            <input name="SV_規格1" type="checkbox" value="a1" />
             111</li>
         <li>
-            <input type="checkbox" value="a2" />
+            <input name="SV_規格1" type="checkbox" value="a2" />
             22</li>
         <li>
-            <input type="checkbox" value="a3" />
+            <input name="SV_規格1" type="checkbox" value="a3" />
             33</li>
         <li>
-            <input type="checkbox" value="a4" />
+            <input name="SV_規格1" type="checkbox" value="a4" />
             4</li>
         <li>
-            <input type="checkbox" value="a5" />
+            <input name="SV_規格1" type="checkbox" value="a5" />
             5</li>
         <li>
-            <input type="checkbox" value="a6" />
+            <input name="SV_規格1" type="checkbox" value="a6" />
             6</li>
         <li>
-            <input type="checkbox" value="a7" />
+            <input name="SV_規格1" type="checkbox" value="a7" />
             7</li>
     </ul>
 </div>
