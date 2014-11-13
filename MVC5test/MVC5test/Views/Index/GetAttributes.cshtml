@@ -30,15 +30,15 @@
                 <span class="name">@name:</span>
                 @if (Model.data[name] == 0)
                 {
-                    <span class="value">@Html.TextBox("PA_" + name, "整形", new { type = "text" })</span>
+                    <span class="value"><input name="PA_@name" class="easyui-numberbox" data-options="precision:4,required:true" style="width:100px;"></span>
                 }
                 else if (Model.data[name] == 1)
                 {
-                    <span class="value"><input name="PA_@name" class="easyui-numberspinner" data-options="min:10,max:100,required:true" style="width:80px;"></span>
+                    <span class="value"><input name="PA_@name" class="easyui-numberspinner" data-options="min:10,max:100,required:true" style="width:100px;"></span>
                 }
                 else
                 {
-                    <span class="value">@Html.TextBox("PA_" + name, "字符串", new { type = "text" })</span>
+                    <span class="value"><input name="PA_@name" class="easyui-validatebox" type="text" data-options="required:true" style="width:100px;"></span>
                 }
             </li>
         }
