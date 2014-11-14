@@ -42,6 +42,21 @@
     <Compile Include="EX.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="MDApp\conf\actions.json" />
+    <None Include="MDApp\conf\data.json" />
+    <None Include="MDApp\conf\list.conf" />
+    <None Include="MDApp\conf\mobile_views.json" />
+    <None Include="MDApp\conf\tp_views.json" />
+    <None Include="MDApp\conf\web_views.json" />
+    <None Include="MDApp\init" />
+    <None Include="MDApp\manifest.json" />
+    <None Include="MDApp\commands.json" />
+    <Content Include="MDApp\README.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MDApp\data\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
