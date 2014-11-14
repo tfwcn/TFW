@@ -1,0 +1,18 @@
+﻿//文件包含本APP的ID和相关信息。
+{
+    "package_id"      : "com.ppht.timer",       // 应用ID             - 必填
+    "name"            : "ppht-timer",           // 应用的名字         - 必填，仅支持 英文、数字
+    "display_name"    : "定時任務",               // 应用的显示名称     - 可选，TP 程序可以用它显示；如果没有设置，默认使用 name 进行显示
+    "author"          : "ppht",           // 应用作者
+    "author_mail"     : "",          // 应用作者联系邮箱
+    "homepage"        : "",      // 应用相关的网页
+    "version"         : "1.0.0",                    // 当前应用版本
+    "os_version"      : "0.6.1",                 // 依赖的系统版本
+    "release_date"    : "2014.11.20",             // 应用发布日期
+    "icon"            : "./res/icon_normal.png", // 图标文件           - 可选，在 TP 上可以用它显示
+    //"icon_url"        : "",        // 图标文件           - 可选，在 Web、Mobile 各端显示用
+    "location"        : "internal",               // 安装位置 (internal,external,both)
+    "description"     : "定時執行重啓、亮屏或執行特定命令等任務。",           // 应用的描述
+    "instruction"     : "1.打開插件; 2.點擊新建任務; 3.選擇定時類型; 4.選擇時間; 5.選擇執行動作; 6.完成;",        // 应用的安装或使用步骤指引
+    "autostart"       : true                      // 应用自动启动       - 可选，true/false
+}
