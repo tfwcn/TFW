@@ -1,0 +1,16 @@
+﻿//描述本应用暴露出来可以进行配置修改的数据。
+{
+    "data1" : {
+      "id"      : "data1",                    // 配置数据的ID
+      "name"    : "username",                 // 配置数据的名字
+      "value"   : "middle",                   // 配置数据的值
+      "group_id": "group1",                   // 配置数据的组ID
+      "type"    : {
+                     "class" : "ENUM|BOOL|INT|STRING|FLOAT|SET",
+                     "items" : ["high", "middle", "low"],  // ENUM，SET适用
+                     "min"   : 0,                          // INT, FLOAT, STRING使用
+                     "max"   : 100,                        // INT, FLOAT, STRING使用
+                     "multiple" : true|false
+                  }
+    }
+}

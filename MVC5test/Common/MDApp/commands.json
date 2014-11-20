@@ -1,0 +1,49 @@
+﻿//文件描述 init 脚本可接受的扩展命令。
+[
+  {
+    "name": "背光设置",
+    "type": "group",
+    "nodes": [
+      {
+        "name": "背光熄灭",
+        "type": "command",
+        "action": "rlease_backlight",
+        "args": [
+          {
+            "name": "FileName",
+            "type": "number"
+          },
+          {
+            "name": "Count",
+            "type": "number"
+          }
+        ],
+        "results": [
+          {
+            "message": "do command success",
+            "code": 0
+          },
+          {
+            "message": "do command failure",
+            "code": -1
+          }
+        ]
+      },
+      {
+        "name": "背光长亮",
+        "type": "command",
+        "action": "lock_backlight"
+      }
+    ]
+  },
+  {
+    "name": "开启背光",
+    "type": "command",
+    "action": "backlight_on"
+  },
+  {
+    "name": "关闭背光",
+    "type": "command",
+    "action": "backlight_off"
+  }
+]

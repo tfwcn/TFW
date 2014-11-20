@@ -1,0 +1,38 @@
+﻿//描述在屏幕中本应用所展示的视图
+{
+    "main-view" : {
+      "id"      : "main-view",                    // 配置视图的ID
+      "name"    : "定時任務",                 // 配置视图的名字
+      "data"    : {
+                    "數據變量1" : {"id" : "數據變量1",// 视图需要展示的数据的ID
+                     "acess" : "RO"        // 数据是否可修改
+                    },
+                    "數據變量2" : {"id" : "數據變量2",// 视图需要展示的数据的ID
+                     "acess" : "RW"        // 数据是否可修改
+                    }
+                  },
+      "menu"    : {                           // 主视图适用
+                      "newtimer" : { "index"  : 1, 
+                        "text"   : "新建任務", 
+                        "type"   : "VIEW",
+                        "viewid" : "new-view"    // VIEW适用
+                       }
+                   }
+    },
+	"new-view" : {
+      "id"      : "new-view",                    // 配置视图的ID
+      "name"    : "操作任務",                 // 配置视图的名字
+      "data"    : {
+                    "數據變量1" : {"id" : "數據變量1",// 视图需要展示的数据的ID
+                     "acess" : "RO"        // 数据是否可修改
+                    }
+                  },
+      "menu"    : {                           // 主视图适用
+                      "newtimer" : { "index"  : 1, 
+                        "text"   : "新建任務", 
+                        "type"   : "VIEW",
+                        "viewid" : viewid    // VIEW适用
+                       }
+                   }
+    }
+}
