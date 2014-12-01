@@ -136,10 +136,5 @@ namespace MVC5test.Controllers
             }
             return retstr.ToArray();
         }
-
-        public void GetA()
-        {
-            //火 水 氣 風 木 金 土
-        }
     }
 }
