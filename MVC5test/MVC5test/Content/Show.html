@@ -5,26 +5,22 @@
     <title></title>
     <script src="../Scripts/jquery-1.11.1.min.js"></script>
     <style type="text/css">
-        *
-        {
+        * {
             font-size: 14px;
             padding: 0;
             margin: 0;
         }
 
-        a
-        {
+        a {
             text-decoration: none;
         }
 
-        .productShow
-        {
+        .productShow {
             width: 1100px;
             overflow: hidden;
         }
 
-            .productShow .topTab
-            {
+            .productShow .topTab {
                 width: 100%;
                 height: 40px;
                 overflow: hidden;
@@ -32,8 +28,7 @@
                 position: relative;
             }
 
-                .productShow .topTab .line
-                {
+                .productShow .topTab .line {
                     width: 100%;
                     height: 1px;
                     background: #860042;
@@ -41,14 +36,12 @@
                     bottom: 0;
                 }
 
-                .productShow .topTab ul
-                {
+                .productShow .topTab ul {
                     padding-left: 130px;
                     position: absolute;
                 }
 
-                .productShow .topTab li
-                {
+                .productShow .topTab li {
                     height: 30px;
                     line-height: 30px;
                     text-align: center;
@@ -62,8 +55,7 @@
                     display: inline-block;
                 }
 
-                .productShow .topTab .select
-                {
+                .productShow .topTab .select {
                     height: 29px;
                     line-height: 29px;
                     text-align: center;
@@ -80,8 +72,7 @@
                     border-right: 1px solid #860042;
                 }
 
-                .productShow .topTab .msg
-                {
+                .productShow .topTab .msg {
                     height: 30px;
                     line-height: 30px;
                     font-size: 12px;
@@ -93,8 +84,7 @@
                     display: inline-block;
                 }
 
-                .productShow .topTab .more
-                {
+                .productShow .topTab .more {
                     height: 30px;
                     line-height: 30px;
                     text-align: right;
@@ -106,8 +96,7 @@
                     float: right;
                 }
 
-                    .productShow .topTab .more a
-                    {
+                    .productShow .topTab .more a {
                         height: 30px;
                         line-height: 30px;
                         text-align: right;
@@ -115,10 +104,9 @@
                         color: #860042;
                     }
 
-            .productShow .shopList
-            {
+            .productShow .shopList {
                 width: 100px;
-                height: 340px;
+                height: 350px;
                 background: #860042;
                 overflow: hidden;
                 position: relative;
@@ -127,8 +115,7 @@
                 float: left;
             }
 
-                .productShow .shopList .up
-                {
+                .productShow .shopList .up {
                     text-align: center;
                     color: #fff;
                     width: 100%;
@@ -141,8 +128,7 @@
                     background: #860042;
                 }
 
-                .productShow .shopList .down
-                {
+                .productShow .shopList .down {
                     text-align: center;
                     color: #fff;
                     width: 100%;
@@ -155,31 +141,31 @@
                     background: #860042;
                 }
 
-                .productShow .shopList ul
-                {
+                .productShow .shopList ul {
                     /*margin-top:-50px;*/
-                }
-
-                .productShow .shopList li
-                {
-                    width: 98px;
-                    height: 48px;
-                    margin: 1px;
                     display: block;
                 }
 
-                .productShow .shopList .select
-                {
+                .productShow .shopList li {
                     width: 98px;
-                    height: 48px;
-                    margin: 1px 0px 1px 1px;
-                    border-left: 1px solid #fff;
+                    height: 49px;
+                    padding: 1px 1px 0px 1px;
+                    display: block;
                 }
 
-            .productShow .infoList
-            {
+                    .productShow .shopList li img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .productShow .shopList .select {
+                    padding: 1px 0px 0px 1px;
+                    border-right: 1px solid #fff;
+                }
+
+            .productShow .infoList {
                 width: 999px;
-                height: 379px;
+                height: 389px;
                 overflow: hidden;
                 display: inline-block;
                 position: relative;
@@ -189,34 +175,29 @@
                 float: left;
             }
 
-                .productShow .infoList .price
-                {
+                .productShow .infoList .price {
                     font-weight: bold;
                     color: #f00;
                 }
 
-                .productShow .infoList li
-                {
+                .productShow .infoList li {
                     display: none;
                     position: absolute;
                     top: 0;
                     left: 0;
                 }
 
-                .productShow .infoList .select
-                {
+                .productShow .infoList .select {
                     display: block;
                 }
 
-                .productShow .infoList dl
-                {
+                .productShow .infoList dl {
                     padding: 5px;
                 }
 
-                .productShow .infoList dt
-                {
+                .productShow .infoList dt {
                     margin: 5px;
-                    height: 354px;
+                    height: 364px;
                     width: 245px;
                     border: 1px solid #860042;
                     float: left;
@@ -225,15 +206,12 @@
                     background-color: #ffe5e5;
                 }
 
-                    .productShow .infoList dt img
-                    {
+                    .productShow .infoList dt img {
                         width: 100%;
                         height: 314px;
-                        border:none;
                     }
 
-                    .productShow .infoList dt .info
-                    {
+                    .productShow .infoList dt .info {
                         display: block;
                         height: 34px;
                         font-size: 14px;
@@ -241,11 +219,10 @@
                         padding: 3px 5px;
                     }
 
-                .productShow .infoList dd
-                {
+                .productShow .infoList dd {
                     margin: 5px;
                     float: left;
-                    height: 171px;
+                    height: 176px;
                     width: 171px;
                     border: 1px solid #860042;
                     display: block; /*999-60-10-171*4*/ /*379-20-2*/
@@ -253,15 +230,12 @@
                     position: relative;
                 }
 
-                    .productShow .infoList dd img
-                    {
+                    .productShow .infoList dd img {
                         height: 100%;
                         width: 100%;
-                        border:none;
                     }
 
-                    .productShow .infoList dd .info
-                    {
+                    .productShow .infoList dd .info {
                         display: block;
                         height: 34px;
                         width: 161px;
@@ -273,6 +247,7 @@
                         left: 0;
                         background-color: #ffe5e5;
                         overflow: hidden;
+                        opacity: 0;
                     }
     </style>
     <script type="text/javascript">
@@ -282,38 +257,61 @@
             var shopListUl = productShow.find('.shopList ul');
             var shopListLi = productShow.find('.shopList li');
             var infoListLi = productShow.find('.infoList li');
+            infoListLi.find('.new').css('display', 'block');
+            infoListLi.find('.hot').css('display', 'none');
             var length = shopListLi.length;
             var handler = function () {
                 index++;
                 if (index >= length)
                     index = 0;
-                shopListUl.animate({ marginTop: (-350 * parseInt(index / 7)) + 'px' }, 500);
                 setShop();
+            };
+            var setShop = function () {
+                shopListUl.animate({ marginTop: (-350 * parseInt(index / 7)) + 'px' }, 500);
+                shopListLi.removeClass('select');
+                shopListLi.eq(index).addClass('select');
+                infoListLi.removeClass('select');
+                infoListLi.eq(index).addClass('select');
+                setNewHot('new');
+            };
+            var setNewHot = function (type) {
+                if (type == 'new') {
+                    productShow.find('.hotTab').removeClass('select');
+                    productShow.find('.newTab').addClass('select');
+                    infoListLi.eq(index).find('.new').css('display', 'block');
+                    infoListLi.eq(index).find('.hot').css('display', 'none');
+                } else {
+                    productShow.find('.newTab').removeClass('select');
+                    productShow.find('.hotTab').addClass('select');
+                    infoListLi.eq(index).find('.hot').css('display', 'block');
+                    infoListLi.eq(index).find('.new').css('display', 'none');
+                }
             };
             var timer = setInterval(handler, 2000);
 
             var clear = function () {
                 clearInterval(timer);
             }
-            var setShop = function () {
-                shopListLi.removeClass('select');
-                shopListLi.eq(index).addClass('select');
-                infoListLi.removeClass('select');
-                infoListLi.eq(index).addClass('select');
-            };
-            var setNewHot = function (type) {
-                if (type == 'new') {
-                    infoListLi.eq(index).find('new').css('display', 'block');
-                    infoListLi.eq(index).find('hot').css('display', 'none');
-                } else {
-                    infoListLi.eq(index).find('hot').css('display', 'block');
-                    infoListLi.eq(index).find('new').css('display', 'none');
-                }
-            };
+            productShow.find('.shopList .up').click(function () {
+                clear();
+                index = (parseInt(index / 7) - 1) * 7;
+                if (index < 0)
+                    index = parseInt(length / 7) * 7;
+                setShop();
+                timer = setInterval(handler, 2000);
+            });
+            productShow.find('.shopList .down').click(function () {
+                clear();
+                index = (parseInt(index / 7) + 1) * 7;
+                if (index >= length)
+                    index = 0;
+                setShop();
+                timer = setInterval(handler, 2000);
+            });
             //品牌選擇
             shopListLi.mouseenter(function () {
                 clear();
-                index=$(this).index()
+                index = $(this).index()
                 setShop();
             });
             shopListLi.mouseleave(function () {
@@ -326,11 +324,26 @@
                 timer = setInterval(handler, 2000);
             });
             //新款熱銷選擇
-            $('.productShow .new').mouseenter(function () {
-                setNew('new');
+            productShow.find('.newTab').mouseenter(function () {
+                setNewHot('new');
+                clear();
             });
-            $('.productShow .hot').mouseenter(function () {
-                setNew('hot');
+            productShow.find('.newTab').mouseleave(function () {
+                timer = setInterval(handler, 2000);
+            });
+            productShow.find('.hotTab').mouseenter(function () {
+                setNewHot('hot');
+                clear();
+            });
+            productShow.find('.hotTab').mouseleave(function () {
+                timer = setInterval(handler, 2000);
+            });
+            //產品信息透明的
+            productShow.find('.infoList dd').mouseenter(function () {
+                $(this).find('.info').animate({ opacity: 1 }, 200);
+            });
+            productShow.find('.infoList dd').mouseleave(function () {
+                $(this).find('.info').animate({ opacity: 0 }, 200);
             });
         }
         $(function () { productShowInit(); });
@@ -353,8 +366,8 @@
         <div class="topTab">
             <div class="line"></div>
             <ul>
-                <li class="select">新款產品</li>
-                <li>熱銷產品</li>
+                <li class="select newTab">新款產品</li>
+                <li class="hotTab">熱銷產品</li>
                 <li class="msg">B品牌 滿￥1000贈￥100</li>
             </ul>
             <div class="more"><a href="#">更多產品&gt;&gt;</a></div>
@@ -468,7 +481,8 @@
                                 <a href="#">
                                     <img src="productimg/1.jpg" title="戒指I" /></a><span class="info">戒指I<br />
                                         ￥<span class="price">8999</span></span></dd>
-                        </dl></div>
+                        </dl>
+                    </div>
                 </li>
                 <li></li>
                 <li>
@@ -550,7 +564,8 @@
                                 <a href="#">
                                     <img src="productimg/1.jpg" title="戒指I" /></a><span class="info">戒指I<br />
                                         ￥<span class="price">8999</span></span></dd>
-                        </dl></div>
+                        </dl>
+                    </div>
                 </li>
             </ul>
         </div>
