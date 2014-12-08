@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\LockTool.html" />
     <Content Include="Content\productimg\1.jpg" />
     <Content Include="Content\productimg\2.jpg" />
     <Content Include="Content\productimg\3.jpg" />
@@ -90,6 +91,8 @@
     <Content Include="Content\productimg\7.jpg" />
     <Content Include="Content\productimg\8.jpg" />
     <Content Include="Content\productimg\9.jpg" />
+    <Content Include="Content\QueryPage.html" />
+    <Content Include="Content\ShopCar.html" />
     <Content Include="Content\shopimg\1.jpg" />
     <Content Include="Content\shopimg\10.jpg" />
     <Content Include="Content\shopimg\11.jpg" />
@@ -102,6 +105,10 @@
     <Content Include="Content\shopimg\8.jpg" />
     <Content Include="Content\shopimg\9.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\toolbarimg\1.png" />
+    <Content Include="Content\toolbarimg\2.png" />
+    <Content Include="Content\toolbarimg\3.png" />
+    <Content Include="Content\toolbarimg\4.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\easyui\themes\black\accordion.css" />
