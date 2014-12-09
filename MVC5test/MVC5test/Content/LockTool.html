@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="../Scripts/jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        * {
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            border: none;
+        }
+
+        .topQuery
+        {
+            position:fixed;
+            top:0;
+            height:50px;
+            line-height:50px;
+            width:100%;
+            background:#eee;
+            z-index:101;
+            display:none;
+        }
+        .rightToolbar
+        {
+            position:fixed;
+            top:0;
+            right:0;
+            height:100%;
+            width:35px;
+            margin-top:50px;
+            background:#eee;
+            z-index:100;
+            display:none;
+        }
+        .rightToolbar li
+        {
+                    height: 35px;
+                    line-height: 35px;
+                    width:35px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #fff;
+                    overflow: hidden;
+                    background: #860042;
+                    padding: 10px 0;
+                    margin-bottom:1px;
+                    display: inline-block;
+        }
+        .rightToolbar .top
+        {
+                    padding: 0;
+                    display: inline-block;
+                    position:fixed;
+                    bottom:0;
+                    right:0;
+        }
+        .rightToolbar .tab
+        {
+            position:fixed;
+            top:0;
+            right:0;
+            height:26px;
+            line-height:26px;
+            text-align:center;
+            width:80px;
+            background:#eee;
+            z-index:100;
+            display:none;
+            writing-mode:lr-tb;
+        }
+    </style>
+    <script type="text/javascript">
+        function topQueryInit() {
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > $('.query').offset().top + $('.query').height()) {
+                    $('.topQuery').css('display', 'block');
+                    $('.rightToolbar').css('display', 'block');
+                } else {
+                    $('.topQuery').css('display', 'none');
+                    $('.rightToolbar').css('display', 'none');
+                }
+            });
+        }
+        function rightToolbarInit() {
+            $('.rightToolbar li').mouseenter(function () {
+                $('.rightToolbar .tab').css('display', 'block');
+                $('.rightToolbar .tab').css('top', $(this).offset().top - $(window).scrollTop()+($(this).outerHeight()/2)-13);
+                $('.rightToolbar .tab').css('left', $(this).offset().left - $(window).scrollLeft() - 80);
+                $('.rightToolbar .tab').html($(this).find('img').attr('title'));
+            });
+            $('.rightToolbar li').mouseleave(function () {
+                $('.rightToolbar .tab').css('display', 'none');
+            });
+        }
+        $(function () {
+            topQueryInit();
+            rightToolbarInit();
+        });
+    </script>
+</head>
+<body>
+    <div class="topQuery">top</div>
+    <div class="rightToolbar"><div class="tab"></div><ul><li><img src="toolbarimg/1.png" title="1" />購物車</li><li><img src="toolbarimg/3.png" title="二維碼" /></li><li class="top"><img src="toolbarimg/4.png" title="4" /></li></ul></div>
+
+    <div style="height:2000px;">
+        <div class="query" style="margin-top:100px; height:20px; background:#808080;">a</div>
+    </div>
+</body>
+</html>
