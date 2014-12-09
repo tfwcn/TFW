@@ -1,0 +1,9 @@
+E:\Files\Git\TFW\MVC5test\CodeHelper\bin\Debug\CodeHelper.exe.config
+E:\Files\Git\TFW\MVC5test\CodeHelper\bin\Debug\CodeHelper.exe
+E:\Files\Git\TFW\MVC5test\CodeHelper\bin\Debug\CodeHelper.pdb
+E:\Files\Git\TFW\MVC5test\CodeHelper\obj\Debug\CodeHelper.csprojResolveAssemblyReference.cache
+E:\Files\Git\TFW\MVC5test\CodeHelper\obj\Debug\CodeHelper.Form1.resources
+E:\Files\Git\TFW\MVC5test\CodeHelper\obj\Debug\CodeHelper.Properties.Resources.resources
+E:\Files\Git\TFW\MVC5test\CodeHelper\obj\Debug\CodeHelper.csproj.GenerateResource.Cache
+E:\Files\Git\TFW\MVC5test\CodeHelper\obj\Debug\CodeHelper.exe
+E:\Files\Git\TFW\MVC5test\CodeHelper\obj\Debug\CodeHelper.pdb
