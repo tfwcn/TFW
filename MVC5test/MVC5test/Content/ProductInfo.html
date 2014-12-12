@@ -1,0 +1,519 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!--https://******:******@nic.changeip.com/nic/update?system=dyndns&hostname=*1-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        *
+        {
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+        }
+
+        a
+        {
+            text-decoration: none;
+        }
+
+        ul, li
+        {
+            list-style-type: none;
+        }
+
+        img
+        {
+            border: none;
+        }
+
+        .productInfo
+        {
+            margin-top: 10px;
+            width: 900px;
+            overflow: hidden;
+            float: left;
+        }
+
+            .productInfo .imgview
+            {
+                width: 300px;
+                overflow: hidden;
+                display: inline-block;
+                float: left;
+            }
+
+                .productInfo .imgview .bigImg
+                {
+                    width: 298px;
+                    height: 298px;
+                    border: 1px solid #eee;
+                }
+
+                    .productInfo .imgview .bigImg img
+                    {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .productInfo .imgview .imgList
+                {
+                    width: 300px;
+                }
+
+                    .productInfo .imgview .imgList .select
+                    {
+                        border: 1px solid #860042;
+                    }
+
+                    .productInfo .imgview .imgList li
+                    {
+                        width: 58px;
+                        height: 58px;
+                        border: 1px solid #eee;
+                        float: left;
+                    }
+
+                        .productInfo .imgview .imgList li img
+                        {
+                            width: 100%;
+                            height: 100%;
+                        }
+
+            .productInfo .infoview
+            {
+                width: 580px;
+                overflow: hidden;
+                display: inline-block;
+                float: left;
+                margin: 0 10px;
+            }
+
+                .productInfo .infoview .title
+                {
+                    font-size: 16px;
+                    font-weight: bold;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-bottom: 10px;
+                    padding: 0 10px;
+                }
+
+
+                .productInfo .infoview .priceInfo
+                {
+                    font-size: 16px;
+                    font-weight: bold;
+                    height: 30px;
+                    line-height: 30px;
+                    background: #eee;
+                    margin-bottom: 20px;
+                }
+
+                    .productInfo .infoview .priceInfo .price
+                    {
+                        color: #f00;
+                    }
+
+                .productInfo .infoview .attributeName
+                {
+                    padding: 0 0 0 10px;
+                    font-size: 12px;
+                    width: 80px;
+                    display: inline-block;
+                }
+
+                .productInfo .infoview .skuList .skuItem
+                {
+                    margin-bottom: 20px;
+                    line-height: 20px;
+                    display: inline-block;
+                }
+
+                    .productInfo .infoview .skuList .skuItem .attributeName
+                    {
+                        float: left;
+                    }
+
+                .productInfo .infoview .skuList ul
+                {
+                    width: 480px;
+                    overflow: hidden;
+                    vertical-align: top;
+                    display: inline-block;
+                    float: left;
+                }
+
+                .productInfo .infoview .skuList li
+                {
+                    font-size: 12px;
+                    height: 20px;
+                    line-height: 20px;
+                    padding: 0 10px;
+                    display: inline-block;
+                    border: 1px solid #ddd;
+                    background: #eee;
+                    cursor: pointer;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+                    float: left;
+                }
+
+                .productInfo .infoview .skuList .select
+                {
+                    border: 1px solid #860042;
+                    background: #ffe5e5;
+                }
+
+                .productInfo .infoview .skuList .none
+                {
+                    color: #ccc;
+                    cursor: not-allowed;
+                }
+
+                .productInfo .infoview .qtyEdit
+                {
+                    display: block;
+                    font-size: 12px;
+                }
+
+                    .productInfo .infoview .qtyEdit .pid
+                    {
+                        display: none;
+                    }
+
+                    .productInfo .infoview .qtyEdit .qtySub
+                    {
+                        font-size: 12px;
+                        height: 20px;
+                        width: 20px;
+                        line-height: 20px;
+                        text-align: center;
+                        display: inline-block;
+                        vertical-align: middle;
+                        border: 1px solid #ddd;
+                        background: #eee;
+                        cursor: pointer;
+                        user-select: none;
+                    }
+
+                    .productInfo .infoview .qtyEdit .qtyAdd
+                    {
+                        font-size: 12px;
+                        height: 20px;
+                        width: 20px;
+                        line-height: 20px;
+                        text-align: center;
+                        display: inline-block;
+                        vertical-align: middle;
+                        border: 1px solid #ddd;
+                        background: #eee;
+                        cursor: pointer;
+                        user-select: none;
+                    }
+
+                    .productInfo .infoview .qtyEdit .qtyText
+                    {
+                        font-size: 12px;
+                        height: 20px;
+                        width: 50px;
+                        line-height: 20px;
+                        text-align: center;
+                        display: inline-block;
+                        vertical-align: middle;
+                        border-top: 1px solid #ddd;
+                        border-bottom: 1px solid #ddd;
+                        border-left: 0px none #fff;
+                        border-right: 0px none #fff;
+                        background: #fff;
+                        ime-mode: disabled;
+                    }
+
+                .productInfo .infoview .btnList
+                {
+                    margin-top: 20px;
+                    padding-left: 90px;
+                }
+
+                    .productInfo .infoview .btnList .btnShopCar
+                    {
+                        font-size: 20px;
+                        font-weight: bold;
+                        width: 150px;
+                        height: 30px;
+                        line-height: 30px;
+                        border: 1px solid #860042;
+                        background: #ffe5e5;
+                        display: inline-block;
+                        color: #860042;
+                        text-align: center;
+                        cursor: pointer;
+                    }
+
+        .descriptionview
+        {
+            overflow: hidden;
+            display: block;
+            float: none;
+            clear: left;
+            padding-top: 10px;
+            margin-right: 10px;
+        }
+
+            .descriptionview .title
+            {
+                font-size: 16px;
+                font-weight: bold;
+                height: 30px;
+                line-height: 30px;
+                background: #eee;
+                border: 1px solid #ddd;
+                padding: 0 10px;
+                color: #999;
+            }
+
+            .descriptionview .info
+            {
+                border-left: 1px solid #ddd;
+                border-right: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                padding: 10px;
+            }
+
+            .descriptionview .property
+            {
+                overflow: hidden;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+
+                .descriptionview .property li
+                {
+                    float: left;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+                }
+
+                .descriptionview .property .propertyName
+                {
+                    width: 80px;
+                    font-size: 12px;
+                    height: 20px;
+                    line-height: 20px;
+                    display: inline-block;
+                }
+
+                .descriptionview .property .propertyValue
+                {
+                    width: 200px;
+                    font-size: 12px;
+                    height: 20px;
+                    line-height: 20px;
+                    display: inline-block;
+                }
+
+            .descriptionview .img
+            {
+                text-align: center;
+            }
+
+        .historyview
+        {
+            margin-top: 10px;
+            width: 198px;
+            overflow: hidden;
+            display: inline-block;
+            float: left;
+            border: 1px solid #ddd;
+        }
+
+            .historyview .title
+            {
+                font-size: 16px;
+                font-weight: bold;
+                height: 30px;
+                line-height: 30px;
+                background: #eee;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 10px;
+                padding: 0 10px;
+                color: #999;
+            }
+
+            .historyview .itemList
+            {
+                width: 182px;
+                margin: 0 auto;
+            }
+
+            .historyview li
+            {
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }
+
+                .historyview li img
+                {
+                    width: 180px;
+                    height: 180px;
+                    border: 1px solid #ddd;
+                    border-radius: 6px;
+                }
+
+            .historyview .info
+            {
+                padding: 0 5px;
+            }
+
+                .historyview .info .price
+                {
+                    color: #f00;
+                }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            productViewInit();
+        });
+        function productViewInit() {
+            $('.productInfo .qtySub').click(function () {
+                var pid = $(this).parent().find('.pid').html();
+                //alert(pid);
+                var qty = parseInt($(this).parent().find('.qtyText').val());
+                if (qty > 1) {
+                    $(this).parent().find('.qtyText').val(qty - 1);
+                }
+            });
+            $('.productInfo .qtyAdd').click(function () {
+                var pid = $(this).parent().find('.pid').html();
+                //alert(pid);
+                var qty = parseInt($(this).parent().find('.qtyText').val());
+                $(this).parent().find('.qtyText').val(qty + 1);
+            });
+            var oldval = 0;
+            $('.productInfo .qtyText').focus(function () {
+                oldval = parseInt($(this).val());
+            });
+            $('.productInfo .qtyText').blur(function () {
+                var pid = $(this).parent().find('.pid').html();
+                //alert(pid);
+                var newval = parseInt($(this).val());
+                if (isNaN(newval)) {
+                    alert('Error');
+                    $(this).val(oldval);
+                    return;
+                }
+                if (oldval != newval) {
+                    alert(newval);
+                }
+            });
+            $('.productInfo .qtyText').keypress(function (event) {
+                var keyCode = event.which;
+                //alert(keyCode);
+                if (keyCode == 8 || (keyCode >= 48 && keyCode <= 57))
+                    return true;
+                else
+                    return false;
+            });
+
+            $('.skuItem li').click(function () {
+                $(this).parent().find('li').removeClass('select');
+                $(this).addClass('select');
+            });
+            $('.imgList li').mouseenter(function () {
+                $(this).parent().find('li').removeClass('select');
+                $(this).addClass('select');
+                $('.bigImg img').attr('src', $(this).find('img').attr('src'));
+            });
+        }
+    </script>
+</head>
+<body>
+    <div style="width: 1100px; margin: 0 auto;">
+        <div class="productInfo">
+            <div class="imgview">
+                <div class="bigImg">
+                    <img src="productimg/1.jpg" />
+                </div>
+                <div class="imgList">
+                    <ul>
+                        <li class="select">
+                            <img src="productimg/1.jpg" /></li>
+                        <li>
+                            <img src="productimg/2.jpg" /></li>
+                        <li>
+                            <img src="productimg/3.jpg" /></li>
+                        <li>
+                            <img src="productimg/4.jpg" /></li>
+                        <li>
+                            <img src="productimg/5.jpg" /></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="infoview">
+                <div class="title">戒指A</div>
+                <div class="priceInfo"><span class="attributeName">價格：</span><span class="price">￥5568</span></div>
+                <div class="skuList">
+                    <div class="skuItem">
+                        <span class="attributeName">sku1：</span>
+                        <ul>
+                            <li>1111</li>
+                            <li class="select">2</li>
+                            <li>333333333333</li>
+                            <li>444444</li>
+                            <li>555</li>
+                            <li>66666666666666666</li>
+                            <li>77777777</li>
+                            <li>8888888888</li>
+                            <li>99999999999999</li>
+                        </ul>
+                    </div>
+                    <div class="skuItem">
+                        <span class="attributeName">sku2：</span>
+                        <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="qtyEdit">
+                    <span class="pid">42A41C60-2456-4343-9627-9C3F2323A949</span>
+                    <span class="attributeName">數量：</span><span class="qtySub" onselectstart="return false">-</span><input class="qtyText" type="text" value="1" /><span class="qtyAdd" onselectstart="return false">+</span> 件
+                </div>
+                <div class="btnList"><span class="btnShopCar">放入購物車</span></div>
+            </div>
+            <div class="descriptionview">
+                <div class="title">產品描述</div>
+                <div class="info">
+                    <div class="property">
+                        <ul>
+                            <li><span class="propertyName">屬性1：</span><span class="propertyValue">屬性值1</span></li>
+                            <li><span class="propertyName">屬性22：</span><span class="propertyValue">屬性值22</span></li>
+                            <li><span class="propertyName">屬性333：</span><span class="propertyValue">屬性值333</span></li>
+                            <li><span class="propertyName">屬性4444：</span><span class="propertyValue">屬性值4444</span></li>
+                        </ul>
+                    </div>
+                    <div class="img">
+                        <img src="#" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="historyview">
+            <div class="title">瀏覽記錄</div>
+            <div class="itemList">
+                <ul>
+                    <li><a href="#">
+                        <img src="productimg/9.jpg" title="戒指I" /></a><span class="info">戒指I<br />
+                            <span class="price">￥8999</span></span></li>
+                    <li><a href="#">
+                        <img src="productimg/8.jpg" title="戒指 " /></a><span class="info">戒指I<br />
+                            <span class="price">￥8999</span></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
