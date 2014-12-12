@@ -91,6 +91,7 @@
     <Content Include="Content\productimg\7.jpg" />
     <Content Include="Content\productimg\8.jpg" />
     <Content Include="Content\productimg\9.jpg" />
+    <Content Include="Content\ProductInfo.html" />
     <Content Include="Content\QueryPage.html" />
     <Content Include="Content\ShopCar.html" />
     <Content Include="Content\shopimg\1.jpg" />
