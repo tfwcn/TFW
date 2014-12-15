@@ -16,6 +16,29 @@ namespace MVC5test.Controllers
         // GET: /Index/
         public ActionResult Index()
         {
+            string skuvalues = "07736FC6-CE1A-431D-9412-79E8785FEFE1,86BA99E2-F519-42CA-8009-055285C03FC8,4D8CE66E-4E47-4083-9222-7DCE1C4F59A2,7B83628D-93DF-432B-B054-87FB1B40CB1F,ABE18D86-4747-4B1A-B5D2-1A0886FBB88C";
+            byte[] bt = System.Text.Encoding.UTF8.GetBytes(skuvalues);
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            System.IO.Compression.GZipStream gzip = new System.IO.Compression.GZipStream(ms, System.IO.Compression.CompressionMode.Compress, true);
+            gzip.Write(bt,0,bt.Length);
+            gzip.Close();
+            byte[] bt2 = ms.ToArray();
+            string minvalues = Convert.ToBase64String(bt2);
+            byte[] bt3 = new Guid("07736FC6-CE1A-431D-9412-79E8785FEFE1").ToByteArray();
+            string minvalues2 = Convert.ToBase64String(bt3);
+            string strguid = "07736FC6-CE1A-431D-9412-79E8785FEFE1".Replace("-","");
+            ulong minvalues2_1 = UInt64.Parse(strguid.Substring(0, 16), System.Globalization.NumberStyles.AllowHexSpecifier);
+            ulong minvalues2_2 = UInt64.Parse(strguid.Substring(16), System.Globalization.NumberStyles.AllowHexSpecifier);
+            for (int i = 0; i < 100000; i++)
+            {
+                Guid g = Guid.NewGuid();
+                string minvalues3_1 = GUIDHelper.GetGUIDNo(g);
+                string minvalues3_2 = GUIDHelper.GetGUID(minvalues3_1).ToString();
+                if (minvalues3_2 != g.ToString())
+                {
+                    throw new Exception("不等於");
+                }
+            }
             return View();
         }
 
