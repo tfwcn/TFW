@@ -82,6 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\LockTool.html" />
+    <Content Include="Content\OrderList.html" />
+    <Content Include="Content\OrderView.html" />
     <Content Include="Content\productimg\1.jpg" />
     <Content Include="Content\productimg\2.jpg" />
     <Content Include="Content\productimg\3.jpg" />
