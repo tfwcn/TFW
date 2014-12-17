@@ -26,6 +26,7 @@ namespace MVC5test.Controllers
                     throw new Exception("不等於");
                 }
             }
+            Page();
             return View();
         }
 
@@ -160,7 +161,62 @@ namespace MVC5test.Controllers
             //生成當前位置URL
             //生成產品類別URL
             //生成skuURL
+            //
+
             return View();
+        }
+
+        public string Page()
+        {
+            //up 1 ... 3 4 5 6 7 ... 10 down
+            //up 1 2 3 4 5 6 ... 10 down
+            //up 1 ... 5 6 7 8 9 10 down
+            int now = 2;
+            int pagecount = 10;
+            int pageshow = 5;
+            int pagestart = 0;
+            int pageend = 0;
+            string up, down;
+            string s1, s2;
+            if (now > 1)
+                up = (now - 1).ToString();
+            else
+                up = "";
+            if (now < pagecount)
+                down = (now + 1).ToString();
+            else
+                down = "";
+
+            if (now - Math.Ceiling(pageshow / 2d) <= 1)
+            {
+                pagestart = 2;
+            }
+            else if (now + Math.Ceiling(pageshow / 2d) >= pagecount)
+            {
+                pagestart = pagecount - pageshow;
+            }
+            else
+            {
+                pagestart = Convert.ToInt32(now - Math.Floor(pageshow / 2d));
+            }
+            pageend = pagestart + pageshow;
+            if (pageend > pagecount)
+                pageend = pagecount;
+            if (pagestart > 2)
+                s1 = "...";
+            else
+                s1 = "";
+            if (pageend < pagecount)
+                s2 = "...";
+            else
+                s2 = "";
+            string mid = "";
+            for (int i = pagestart; i < pageend; i++)
+            {
+                mid += " " + i + " ";
+            }
+            string all = String.Format("{4} 1 {0}{1}{2} {3} {5}", s1, mid, s2, pagecount <= 1 ? "" : pagecount.ToString(), up, down);
+            return all;
         }
     }
 }
