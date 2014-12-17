@@ -16,19 +16,6 @@ namespace MVC5test.Controllers
         // GET: /Index/
         public ActionResult Index()
         {
-            string skuvalues = "07736FC6-CE1A-431D-9412-79E8785FEFE1,86BA99E2-F519-42CA-8009-055285C03FC8,4D8CE66E-4E47-4083-9222-7DCE1C4F59A2,7B83628D-93DF-432B-B054-87FB1B40CB1F,ABE18D86-4747-4B1A-B5D2-1A0886FBB88C";
-            byte[] bt = System.Text.Encoding.UTF8.GetBytes(skuvalues);
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            System.IO.Compression.GZipStream gzip = new System.IO.Compression.GZipStream(ms, System.IO.Compression.CompressionMode.Compress, true);
-            gzip.Write(bt,0,bt.Length);
-            gzip.Close();
-            byte[] bt2 = ms.ToArray();
-            string minvalues = Convert.ToBase64String(bt2);
-            byte[] bt3 = new Guid("07736FC6-CE1A-431D-9412-79E8785FEFE1").ToByteArray();
-            string minvalues2 = Convert.ToBase64String(bt3);
-            string strguid = "07736FC6-CE1A-431D-9412-79E8785FEFE1".Replace("-","");
-            ulong minvalues2_1 = UInt64.Parse(strguid.Substring(0, 16), System.Globalization.NumberStyles.AllowHexSpecifier);
-            ulong minvalues2_2 = UInt64.Parse(strguid.Substring(16), System.Globalization.NumberStyles.AllowHexSpecifier);
             for (int i = 0; i < 100000; i++)
             {
                 Guid g = Guid.NewGuid();
@@ -39,6 +26,7 @@ namespace MVC5test.Controllers
                     throw new Exception("不等於");
                 }
             }
+            Page();
             return View();
         }
 
@@ -158,6 +146,77 @@ namespace MVC5test.Controllers
                 retstr.Add("@" + pname + "_" + i);
             }
             return retstr.ToArray();
+        }
+
+        public ActionResult QueryData(string kw,string c,string skus)
+        {
+            List<string> listC = new List<string>();
+            List<string> listSkus = new List<string>();
+            Dictionary<string, string> listskuselect = new Dictionary<string, string>();
+            listskuselect.Keys.ToList().Exists(m => m == "");
+            listskuselect.Add("", "");
+            //查詢
+            //根據查詢條件獲取產品類別條件
+            //根據查詢條件獲取sku
+            //生成當前位置URL
+            //生成產品類別URL
+            //生成skuURL
+            //
+
+            return View();
+        }
+
+        public string Page()
+        {
+            //up 1 ... 3 4 5 6 7 ... 10 down
+            //up 1 2 3 4 5 6 ... 10 down
+            //up 1 ... 5 6 7 8 9 10 down
+            int now = 2;
+            int pagecount = 10;
+            int pageshow = 5;
+            int pagestart = 0;
+            int pageend = 0;
+            string up, down;
+            string s1, s2;
+            if (now > 1)
+                up = (now - 1).ToString();
+            else
+                up = "";
+            if (now < pagecount)
+                down = (now + 1).ToString();
+            else
+                down = "";
+
+            if (now - Math.Ceiling(pageshow / 2d) <= 1)
+            {
+                pagestart = 2;
+            }
+            else if (now + Math.Ceiling(pageshow / 2d) >= pagecount)
+            {
+                pagestart = pagecount - pageshow;
+            }
+            else
+            {
+                pagestart = Convert.ToInt32(now - Math.Floor(pageshow / 2d));
+            }
+            pageend = pagestart + pageshow;
+            if (pageend > pagecount)
+                pageend = pagecount;
+            if (pagestart > 2)
+                s1 = "...";
+            else
+                s1 = "";
+            if (pageend < pagecount)
+                s2 = "...";
+            else
+                s2 = "";
+            string mid = "";
+            for (int i = pagestart; i < pageend; i++)
+            {
+                mid += " " + i + " ";
+            }
+            string all = String.Format("{4} 1 {0}{1}{2} {3} {5}", s1, mid, s2, pagecount <= 1 ? "" : pagecount.ToString(), up, down);
+            return all;
         }
     }
 }

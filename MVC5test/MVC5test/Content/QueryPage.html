@@ -22,18 +22,44 @@
             border: none;
         }
 
+        ul, li
+        {
+            list-style-type: none;
+        }
+
         .quertCondition
         {
-            width:100%;
+            width: 100%;
         }
-        .quertCondition .SKU
-        {
-            border:1px solid #860042;
-        }
-        .quertCondition .SKU li
-        {
-            float:left;
-        }
+
+            .quertCondition .SKU
+            {
+                border: 1px solid #860042;
+                display: block;
+                overflow: hidden;
+            }
+
+                .quertCondition .SKU .name
+                {
+                    float: left;
+                    display: inline-block;
+                    width: 100px;
+                }
+
+                .quertCondition .SKU ul
+                {
+                    float: left;
+                    display: inline-block;
+                    width: 998px;
+                }
+
+                .quertCondition .SKU li
+                {
+                    float: left;
+                    padding: 3px 10px;
+                    border: 1px solid #860042;
+                    margin-right: 10px;
+                }
     </style>
     <script type="text/javascript">
         $(function () {
@@ -43,9 +69,66 @@
 <body>
     <div style="width: 1100px; margin: 0 auto;">
         <div class="quertCondition">
-            <div class="SKU"><ul><li>SKUval1</li><li>SKUval2</li><li>SKUval3</li><li>SKUval4</li><li>SKUval5</li></ul></div>
-            <div class="SKU"><ul><li>SKUval1</li><li>SKUval2</li><li>SKUval3</li><li>SKUval4</li><li>SKUval5</li></ul></div>
-            <div class="SKU"><ul><li>SKUval1</li><li>SKUval2</li><li>SKUval3</li><li>SKUval4</li><li>SKUval5</li></ul></div>
+            <div class="SKU">
+                <div class="name">SKU1</div>
+                <ul>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                </ul>
+            </div>
+            <div class="SKU">
+                <div class="name">SKU2</div>
+                <ul>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                </ul>
+            </div>
+            <div class="SKU">
+                <div class="name">SKU3</div>
+                <ul>
+                    <li>SKUval1</li>
+                    <li>SKUval2</li>
+                    <li>SKUval3</li>
+                    <li>SKUval4</li>
+                    <li>SKUval5</li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>
