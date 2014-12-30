@@ -27,6 +27,7 @@ namespace MVC5test.Controllers
                 }
             }
             Page();
+            //return RedirectToAction("Hello", new { msg = "RedirectToAction:Hello" });
             return View();
         }
 
@@ -111,12 +112,23 @@ namespace MVC5test.Controllers
         public ActionResult AttributesSubmit()
         {
             string vals = "";
-            vals += Request["PA_n1"] + ",";
-            vals += Request["PA_n2"] + ",";
-            vals += Request["PA_n3"] + ",";
-            vals += Request["SV_規格1"] + ",";
-            List<SqlParameter> paras = new List<SqlParameter>();
-            string test = string.Join(",", ValuesToWhere("p1", new string[] { "aa", "ss", "dd" }, paras));
+            //get
+            foreach (var tmpkey in Request.QueryString.AllKeys)
+            {
+                vals += tmpkey + ":" + Request[tmpkey]+"<br/>";
+            }
+            //post
+            foreach (var tmpkey in Request.Form.AllKeys)
+            {
+                vals += tmpkey + ":" + Request[tmpkey] + "<br/>";
+            }
+            //vals += Request["PA_n1"] + ",";
+            //vals += Request["PA_n2"] + ",";
+            //vals += Request["PA_n3"] + ",";
+            //vals += Request["SV_規格1"] + ",";
+            //List<SqlParameter> paras = new List<SqlParameter>();
+            //string test = string.Join(",", ValuesToWhere("p1", new string[] { "aa", "ss", "dd" }, paras));
+            //
             return Content(vals);
         }
 
@@ -155,13 +167,9 @@ namespace MVC5test.Controllers
             Dictionary<string, string> listskuselect = new Dictionary<string, string>();
             listskuselect.Keys.ToList().Exists(m => m == "");
             listskuselect.Add("", "");
-            //查詢
-            //根據查詢條件獲取產品類別條件
-            //根據查詢條件獲取sku
-            //生成當前位置URL
-            //生成產品類別URL
-            //生成skuURL
-            //
+            //訂單
+            //列表
+            //明細（店鋪 備註 產品列表）
 
             return View();
         }
@@ -171,6 +179,8 @@ namespace MVC5test.Controllers
             //up 1 ... 3 4 5 6 7 ... 10 down
             //up 1 2 3 4 5 6 ... 10 down
             //up 1 ... 5 6 7 8 9 10 down
+            //sv p 
+            //sku pid aid svid
             int now = 2;
             int pagecount = 10;
             int pageshow = 5;
