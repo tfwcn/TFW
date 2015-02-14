@@ -112,6 +112,7 @@
     <Content Include="Content\toolbarimg\2.png" />
     <Content Include="Content\toolbarimg\3.png" />
     <Content Include="Content\toolbarimg\4.png" />
+    <Content Include="Content\Video.html" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\easyui\themes\black\accordion.css" />
