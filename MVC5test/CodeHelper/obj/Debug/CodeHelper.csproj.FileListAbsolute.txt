@@ -19,3 +19,6 @@ E:\FIles\Git\TFW\MVC5test\CodeHelper\bin\Debug\CodeHelper.exe
 E:\FIles\Git\TFW\MVC5test\CodeHelper\bin\Debug\CodeHelper.pdb
 E:\FIles\Git\TFW\MVC5test\CodeHelper\bin\Debug\Common.dll
 E:\FIles\Git\TFW\MVC5test\CodeHelper\bin\Debug\Common.pdb
+D:\Document\a\webfile\GitClone\TFW\MVC5test\CodeHelper\bin\Debug\Common.dll
+D:\Document\a\webfile\GitClone\TFW\MVC5test\CodeHelper\bin\Debug\Common.pdb
+D:\Document\a\webfile\GitClone\TFW\MVC5test\CodeHelper\obj\Debug\CodeHelper.Form2.resources
