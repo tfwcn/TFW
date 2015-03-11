@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\jqm.html" />
     <Content Include="Content\LockTool.html" />
     <Content Include="Content\OrderList.html" />
     <Content Include="Content\OrderView.html" />
@@ -415,6 +416,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery-1.11.1.min.map" />
     <Content Include="Views\Index\GetAttributes.cshtml" />
+    <Content Include="Views\Help\JQMtest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
