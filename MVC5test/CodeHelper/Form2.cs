@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using DBManager;
 using Common;
 
 namespace CodeHelper
@@ -22,7 +23,7 @@ namespace CodeHelper
         private void button1_Click(object sender, EventArgs e)
         {
             Console.WriteLine(DateTime.Now);
-            using (SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=DBTest;Persist Security Info=True;User ID=sa;Password=sa123"))
+            /*using (SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=DBTest;Persist Security Info=True;User ID=sa;Password=sa123"))
             {
                 conn.Open();
                 #region Read
@@ -48,7 +49,7 @@ namespace CodeHelper
                 //    t1.fremark = Guid.NewGuid().ToString();
                 //    list.Add(t1);
                 //}
-                //DataTable dt = list.ListToDataTable(null, true);
+                //DataTable dt = list.ListToDataTable<T1>(null, true);
                 //using (SqlDataAdapter da = new SqlDataAdapter())
                 //{
                 //    SqlTransaction t = conn.BeginTransaction();
@@ -145,10 +146,94 @@ namespace CodeHelper
                 //}
                 //Console.WriteLine(DateTime.Now);
                 #endregion
-                conn.Close();
-            }
 
+                conn.Close();
+            }//*/
+            #region NewTable
+            /*DBTable t = new DBTable();
+            t.CID = Guid.NewGuid().ToString();
+            t.CGID = Guid.NewGuid().ToString();
+            t.CName = "A表";
+            t.CCUser = "SA";
+            t.CUUser = "SA";
+            DBTableCol c1 = new DBTableCol();
+            c1.CID = Guid.NewGuid().ToString();
+            c1.CGID = t.CGID;
+            c1.CDBTableID = t.CID;
+            c1.CPK = true;
+            c1.CType = DBTableCol.ColType.英文;
+            c1.CSize = 36;
+            c1.CName = "A主键";
+            c1.CNotNULL = true;
+            c1.CCUser = "SA";
+            c1.CUUser = "SA";
+            t.CCols.Add(c1);
+            c1 = new DBTableCol();
+            c1.CID = Guid.NewGuid().ToString();
+            c1.CGID = t.CGID;
+            c1.CDBTableID = t.CID;
+            c1.CIX = DBTableCol.IXType.唯一索引;
+            c1.CType = DBTableCol.ColType.文本;
+            c1.CSize = 50;
+            c1.CName = "A唯一索引";
+            c1.CDefaultValue = "aa中文";
+            c1.CCUser = "SA";
+            c1.CUUser = "SA";
+            t.CCols.Add(c1);
+            c1 = new DBTableCol();
+            c1.CID = Guid.NewGuid().ToString();
+            c1.CGID = t.CGID;
+            c1.CDBTableID = t.CID;
+            c1.CIX = DBTableCol.IXType.普通索引;
+            c1.CType = DBTableCol.ColType.数字;
+            c1.CSize = 8;
+            c1.CDecimalsSize = 4;
+            c1.CName = "A普通索引";
+            c1.CDefaultValue = "1";
+            c1.CCUser = "SA";
+            c1.CUUser = "SA";
+            t.CCols.Add(c1);
+            DBManager.DBTableManager dbTableManager = new DBTableManager();
+            dbTableManager.AddTable(t);//*/
+            #endregion
+            //string s = Common.Encryption.Decrypt("PDOwkfEV0Zu4D+12loQkZ7Couzi31WMRClZW0vsdLCx5xFlfq8DZxA0U7Ziv8tFXPJ9v8Ba8YSE3ycdcsMnOJ0LLGKEwwQzjyWcS0BgUj5K8VitaPhuZj/04E1PSCEfb", "GOLDSALES");
+            //s = Common.Encryption.Encrypt("Data Source=192.168.4.18;Initial Catalog=GOLDSALES;User ID=3247;Password=511400a", "GOLDSALES");
+            //欲进行md5加密的字符串  
+            string test = "123abc";  
+            /*
+            //获取加密服务  
+            System.Security.Cryptography.MD5CryptoServiceProvider md5CSP = new System.Security.Cryptography.MD5CryptoServiceProvider();  
+         
+            //获取要加密的字段，并转化为Byte[]数组  
+            byte[] testEncrypt = System.Text.Encoding.Unicode.GetBytes(test);  
+  
+            //加密Byte[]数组  
+            byte[] resultEncrypt = md5CSP.ComputeHash(testEncrypt);  
+  
+            //将加密后的数组转化为字段(普通加密)  
+            string testResult = System.Text.Encoding.Unicode.GetString(resultEncrypt);
+            //*/
+            string testResult = GetMD5(test);
             Console.WriteLine(DateTime.Now);
         }
+        public string GetRandomNum(string value,string key,int size,int index)
+        {
+            string retValue = "";
+            return retValue;
+        }
+        public static string GetMD5(string sDataIn)
+        {
+            System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] bytValue, bytHash;
+            bytValue = System.Text.Encoding.UTF8.GetBytes(sDataIn);
+            bytHash = md5.ComputeHash(bytValue);
+            md5.Clear();
+            string sTemp = "";
+            for (int i = 0; i < bytHash.Length; i++)
+            {
+                sTemp += bytHash[i].ToString("X").PadLeft(2, '0');
+            }
+            return sTemp.ToLower();
+        }  
     }
 }

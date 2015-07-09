@@ -29,8 +29,8 @@ namespace Common
             List<DataColumn> pkList = new List<DataColumn>();
             foreach (var propertieInfo in objType.GetPropertiesPGS(dbCanRead, dbCanWrite))
             {
-                DataColumn col = dt.Columns.Add(propertieInfo.Name, propertieInfo.PropertyType);
-                DBEX.DBColAttribute attribute = Attribute.GetCustomAttribute(objType, typeof(DBEX.DBColAttribute)) as DBEX.DBColAttribute;
+                DataColumn col = dt.Columns.Add(propertieInfo.Name, (propertieInfo.PropertyType.IsGenericType && propertieInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? propertieInfo.PropertyType.GetGenericArguments()[0] : propertieInfo.PropertyType);
+                DBEX.DBColAttribute attribute = Attribute.GetCustomAttribute(propertieInfo, typeof(DBEX.DBColAttribute)) as DBEX.DBColAttribute;
                 if (attribute != null && attribute.PKey == true)
                 {
                     pkList.Add(col);
@@ -43,6 +43,32 @@ namespace Common
             return dt;
         }
         /// <summary>
+        /// 對象轉DataTable(含值)
+        /// </summary>
+        public static DataTable ModelToDataTableHasValue(this object obj, bool? dbCanRead, bool? dbCanWrite)
+        {
+            Type objType = obj.GetType();
+            DataTable dt = new DataTable(objType.Name);
+            List<DataColumn> pkList = new List<DataColumn>();
+            foreach (var propertieInfo in objType.GetPropertiesPGS(dbCanRead, dbCanWrite))
+            {
+                DataColumn col = dt.Columns.Add(propertieInfo.Name, (propertieInfo.PropertyType.IsGenericType && propertieInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? propertieInfo.PropertyType.GetGenericArguments()[0] : propertieInfo.PropertyType);
+                DBEX.DBColAttribute attribute = Attribute.GetCustomAttribute(propertieInfo, typeof(DBEX.DBColAttribute)) as DBEX.DBColAttribute;
+                if (attribute != null && attribute.PKey == true)
+                {
+                    pkList.Add(col);
+                }
+            }
+            if (pkList.Count > 0)
+            {
+                dt.PrimaryKey = pkList.ToArray();
+            }
+            DataRow dr= dt.NewRow();
+            obj.ModelToDataRow(dr, objType.GetPropertiesPGS(dbCanRead, dbCanWrite));
+            dt.Rows.Add(dr);
+            return dt;
+        }
+        /// <summary>
         /// 獲取可讀寫公共屬性
         /// </summary>
         private static PropertyInfo[] GetPropertiesPGS(this Type objType, bool? dbCanRead, bool? dbCanWrite)
@@ -50,7 +76,7 @@ namespace Common
             List<PropertyInfo> properties = new List<PropertyInfo>();
             foreach (var property in objType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty | BindingFlags.SetProperty))
             {
-                DBEX.DBColAttribute attribute = Attribute.GetCustomAttribute(objType, typeof(DBEX.DBColAttribute)) as DBEX.DBColAttribute;
+                DBEX.DBColAttribute attribute = Attribute.GetCustomAttribute(property, typeof(DBEX.DBColAttribute)) as DBEX.DBColAttribute;
                 if (attribute == null || ((dbCanRead == null || attribute.CanRead == dbCanRead) && (dbCanWrite == null || attribute.CanWrite == dbCanWrite)))
                 {
                     properties.Add(property);
@@ -66,7 +92,7 @@ namespace Common
             Type objType = obj.GetType();
             foreach (var propertieInfo in properties)
             {
-                dr[propertieInfo.Name] = propertieInfo.GetValue(obj);
+                dr[propertieInfo.Name] = propertieInfo.GetValue(obj) == null ? DBNull.Value : propertieInfo.GetValue(obj);
             }
             return dr;
         }
@@ -90,6 +116,14 @@ namespace Common
                 dt.Rows.Add(dr);
             }
             return dt;
+        }
+        /// <summary>
+        /// DataRow轉對象
+        /// </summary>
+        public static T DataRowToModel<T>(this DataRow dr, bool? dbCanRead, bool? dbCanWrite) where T : new()
+        {
+            PropertyInfo[] properties = typeof(T).GetPropertiesPGS(dbCanRead, dbCanWrite);
+            return dr.DataRowToModel<T>(properties);
         }
         /// <summary>
         /// DataRow轉對象

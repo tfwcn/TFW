@@ -100,6 +100,10 @@
       <Project>{aa5ceeb7-77a8-45c8-a12a-12ecba6d2e6f}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DBManager\DBManager.csproj">
+      <Project>{53edd569-65c5-456b-9be0-ac77d8ad29d6}</Project>
+      <Name>DBManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

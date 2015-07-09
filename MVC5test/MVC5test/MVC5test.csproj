@@ -437,6 +437,10 @@
       <Project>{9acc0041-c82b-4cb0-a162-c54e7200b0e5}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DBManager\DBManager.csproj">
+      <Project>{53edd569-65c5-456b-9be0-ac77d8ad29d6}</Project>
+      <Name>DBManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
