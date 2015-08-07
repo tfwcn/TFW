@@ -5,14 +5,32 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common;
+using BWFramework.Common;
 
-namespace DBHelper
+namespace BWFramework.DBHelper.Base
 {
-    public abstract class DBHelperBase
+    public abstract class DBHelperBase:DBTransactionHelper.DBTransactionBase
     {
+        #region 靜態方法
+        private static DBHelperBase commonDBHelper;
+        /// <summary>
+        /// 创建数据库连接类
+        /// </summary>
+        public static void CreateDBHelper()
+        {
+            commonDBHelper = new MSSQLHelper();
+        }
+        /// <summary>
+        /// 获得数据库连接类
+        /// </summary>
+        public static DBHelperBase GetDBHelper()
+        {
+            if (commonDBHelper == null)
+                CreateDBHelper();
+            return commonDBHelper;
+        }
+        #endregion
         protected string connectionString;
-        protected DbTransaction dbTransaction;
         public DBHelperBase()
         {
         }
@@ -20,45 +38,30 @@ namespace DBHelper
         {
             this.connectionString = connectionString;
         }
-        public class DBTransactionHelper:IDisposable
-        {
-            private DbConnection conn;
-            protected DbTransaction dbTransaction;
-            protected DBHelperBase dbDBHelper;
-            public DBTransactionHelper(DBHelperBase dbDBHelper)
-            {
-                this.dbDBHelper = dbDBHelper;
-                conn = dbDBHelper.GetConnection();
-                conn.Open();
-                this.dbTransaction = conn.BeginTransaction();
-                dbDBHelper.dbTransaction = this.dbTransaction;
-            }
-            public void Commit()
-            {
-                this.dbTransaction.Commit();
-            }
-
-            #region IDisposable 成员
-
-            public void Dispose()
-            {
-                this.conn.Close();
-                this.conn = null;
-                this.dbDBHelper.dbTransaction = null;
-                this.dbDBHelper = null;
-                this.dbTransaction = null;
-            }
-
-            #endregion
-        }
-        protected abstract DbConnection GetConnection();
         protected abstract DbCommand GetCommand(string cmdText, DbConnection connection);
         protected abstract DbCommand GetCommand(string cmdText, DbConnection connection, DbTransaction transaction);
         protected abstract DbDataAdapter GetDbDataAdapter();
         protected abstract DbCommandBuilder GetDbCommandBuilder(DbDataAdapter adapter);
-        public abstract DbParameter NewDbParameter(string ParameterName, DbType DbType,object Value );
+        public abstract DbParameter NewDbParameter(string ParameterName, DbType DbType, object Value);
         public abstract DbParameter NewDbParameter(string ParameterName, DbType DbType, object Value, int Size);
         public abstract DbParameter NewDbParameter(string ParameterName, DbType DbType, string SourceColumn);
+        /// <summary>
+        /// 是否存在事务
+        /// </summary>
+        public virtual bool HasDBTransactionHelper()
+        {
+            return this.dbTransaction != null;
+        }
+        /// <summary>
+        /// 创建事务
+        /// </summary>
+        public virtual DBTransactionHelper.DBTransactionHelper CreateDBTransactionHelper()
+        {
+            if (this.dbTransaction == null)
+                return new DBTransactionHelper.DBTransactionHelper(this);
+            else
+                throw new Exception("不能重复创建事务！");
+        }
         public virtual DbType GetDbType(Type t)
         {
             DbType dbType;
@@ -254,7 +257,7 @@ namespace DBHelper
                     using (DbDataAdapter da = GetDbDataAdapter())
                     {
                         da.InsertCommand = GetCommand(null, conn, dbTransaction);
-                        CreateInsertSql(da.InsertCommand,dt);
+                        CreateInsertSql(da.InsertCommand, dt);
                         if (timeOut != null)
                             da.InsertCommand.CommandTimeout = timeOut.Value;//秒
                         da.InsertCommand.UpdatedRowSource = UpdateRowSource.None;//批量更新必须
@@ -440,9 +443,17 @@ namespace DBHelper
             List<DbParameter> paramenters = new List<DbParameter>();
             foreach (DataColumn col in dt.Columns)
             {
-                sqlCol += col.ColumnName + ",";
-                sqlVal += "@" + col.ColumnName + ",";
-                paramenters.Add(NewDbParameter("@" + col.ColumnName, GetDbType(col.DataType), col.ColumnName));
+                if (col.ColumnName == "CCreateTime")//自动记录创建时间
+                {
+                    sqlCol += col.ColumnName + ",";
+                    sqlVal += "GETDATE(),";
+                }
+                else
+                {
+                    sqlCol += col.ColumnName + ",";
+                    sqlVal += "@" + col.ColumnName + ",";
+                    paramenters.Add(NewDbParameter("@" + col.ColumnName, GetDbType(col.DataType), col.ColumnName));
+                }
             }
             sqlCol = sqlCol.Substring(0, sqlCol.Length - 1);
             sqlVal = sqlVal.Substring(0, sqlVal.Length - 1);
@@ -514,10 +525,6 @@ namespace DBHelper
                         ispk = true;
                         break;
                     }
-                }
-                if (col.ColumnName == "CVersion")
-                {
-                    sqlWhere += col.ColumnName + "=@" + col.ColumnName + " and ";
                 }
                 if (ispk)
                 {

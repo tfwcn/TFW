@@ -96,9 +96,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
+    <ProjectReference Include="..\BWFramework\BLL\BLL.csproj">
+      <Project>{096a5c7a-3319-45f7-9f8f-2f8ac4e30789}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BWFramework\Common\Common.csproj">
       <Project>{aa5ceeb7-77a8-45c8-a12a-12ecba6d2e6f}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BWFramework\Model\Model.csproj">
+      <Project>{bf724f91-409b-4ddd-a849-d5fb276b16a4}</Project>
+      <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\DBManager\DBManager.csproj">
       <Project>{53edd569-65c5-456b-9be0-ac77d8ad29d6}</Project>

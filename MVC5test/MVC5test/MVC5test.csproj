@@ -115,6 +115,7 @@
     <Content Include="Content\toolbarimg\4.png" />
     <Content Include="Content\Video.html" />
     <Content Include="Global.asax" />
+    <Content Include="MDApp\README.html" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\easyui\themes\black\accordion.css" />
     <Content Include="Scripts\easyui\themes\black\calendar.css" />
@@ -417,6 +418,15 @@
     <Content Include="Scripts\jquery-1.11.1.min.map" />
     <Content Include="Views\Index\GetAttributes.cshtml" />
     <Content Include="Views\Help\JQMtest.cshtml" />
+    <Content Include="MDApp\commands.json" />
+    <Content Include="MDApp\conf\actions.json" />
+    <Content Include="MDApp\conf\data.json" />
+    <Content Include="MDApp\conf\list.conf" />
+    <Content Include="MDApp\conf\mobile_views.json" />
+    <Content Include="MDApp\conf\tp_views.json" />
+    <Content Include="MDApp\conf\web_views.json" />
+    <Content Include="MDApp\init" />
+    <Content Include="MDApp\manifest.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -426,16 +436,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="MDApp\data\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
+    <ProjectReference Include="..\BWFramework\Common\Common.csproj">
       <Project>{aa5ceeb7-77a8-45c8-a12a-12ecba6d2e6f}</Project>
       <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{9acc0041-c82b-4cb0-a162-c54e7200b0e5}</Project>
-      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DBManager\DBManager.csproj">
       <Project>{53edd569-65c5-456b-9be0-ac77d8ad29d6}</Project>

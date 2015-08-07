@@ -7,14 +7,14 @@ using System.Data.Common;
 using Npgsql;
 using System.Data;
 
-namespace DBHelper
+namespace BWFramework.DBHelper
 {
     /// <summary>
     /// 数据库操作基类(for PostgreSQL)
     /// </summary>
-    public class PostgreHelper : DBHelperBase
+    public class PostgreHelper : DBHelper.Base.DBHelperBase
     {
-        protected override DbConnection GetConnection()
+        public override DbConnection GetConnection()
         {
             this.connectionString = "Server=localhost;Port=5432;User Id=postgres;"
                 + "Password=sa123; Database=TESTDB;"

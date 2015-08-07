@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common
+namespace BWFramework.Common
 {
     public static class GUIDHelper
     {
-        private const string BASE_CHAR = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
+        private const string BASE_CHAR = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_$#!~`";
         private const string HEX_CHAR = "0123456789ABCDEF";
         private static uint BCLen = (uint)BASE_CHAR.Length;
         /// <summary>

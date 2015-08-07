@@ -7,14 +7,14 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace DBHelper
+namespace BWFramework.DBHelper
 {
     /// <summary>
     /// 数据库操作基类(for PostgreSQL)
     /// </summary>
-    public class MSSQLHelper : DBHelperBase
+    public class MSSQLHelper : DBHelper.Base.DBHelperBase
     {
-        protected override DbConnection GetConnection()
+        public override DbConnection GetConnection()
         {
             this.connectionString = "Data Source=.;Initial Catalog=DBTest;Persist Security Info=True;"
                 + "User ID=sa;Password=sa123;";

@@ -22,7 +22,7 @@ namespace DBManager
             唯一索引 = 1,
             普通索引 = 2
         }
-        [Common.DBEX.DBCol(PKey = true)]
+        [BWFramework.Common.AttributeEx.DBCol(PKey = true)]
         public string CID { get; set; }
         public string CDBTableID { get; set; }
         public string CName { get; set; }

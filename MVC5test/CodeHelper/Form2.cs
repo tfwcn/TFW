@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using DBManager;
-using Common;
+using BWFramework.Common;
 
 namespace CodeHelper
 {
@@ -199,7 +199,7 @@ namespace CodeHelper
             //string s = Common.Encryption.Decrypt("PDOwkfEV0Zu4D+12loQkZ7Couzi31WMRClZW0vsdLCx5xFlfq8DZxA0U7Ziv8tFXPJ9v8Ba8YSE3ycdcsMnOJ0LLGKEwwQzjyWcS0BgUj5K8VitaPhuZj/04E1PSCEfb", "GOLDSALES");
             //s = Common.Encryption.Encrypt("Data Source=192.168.4.18;Initial Catalog=GOLDSALES;User ID=3247;Password=511400a", "GOLDSALES");
             //欲进行md5加密的字符串  
-            string test = "123abc";  
+            string test = "123abc";
             /*
             //获取加密服务  
             System.Security.Cryptography.MD5CryptoServiceProvider md5CSP = new System.Security.Cryptography.MD5CryptoServiceProvider();  
@@ -216,7 +216,7 @@ namespace CodeHelper
             string testResult = GetMD5(test);
             Console.WriteLine(DateTime.Now);
         }
-        public string GetRandomNum(string value,string key,int size,int index)
+        public string GetRandomNum(string value, string key, int size, int index)
         {
             string retValue = "";
             return retValue;
@@ -234,6 +234,38 @@ namespace CodeHelper
                 sTemp += bytHash[i].ToString("X").PadLeft(2, '0');
             }
             return sTemp.ToLower();
-        }  
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BWFramework.BLL.TUser bllTUser = new BWFramework.BLL.TUser();
+            BWFramework.BLL.TUserInfo bllTUserInfo = new BWFramework.BLL.TUserInfo();
+            //List<BWFramework.Model.TUser> tmpListTUser = new List<BWFramework.Model.TUser>();
+            //List<BWFramework.Model.TUserInfo> tmpListTUserInfo = new List<BWFramework.Model.TUserInfo>();
+            //for (int i = 1; i <= 10; i++)
+            //{
+            //    BWFramework.Model.TUser tmpTUser = new BWFramework.Model.TUser();
+            //    tmpTUser.CID = Guid.NewGuid().ToString();
+            //    tmpTUser.CLoginNo = "test" + i;
+            //    tmpTUser.CPassword = "test" + i;
+            //    tmpTUser.CName = "新用户" + i;
+            //    tmpListTUser.Add(tmpTUser);
+
+            //    BWFramework.Model.TUserInfo tmpTUserInfo = new BWFramework.Model.TUserInfo();
+            //    tmpTUserInfo.CID = Guid.NewGuid().ToString();
+            //    tmpTUserInfo.CUserID = tmpTUser.CID;
+            //    tmpTUserInfo.CSex = new Random().Next(3);
+            //    tmpTUserInfo.CMoney = i * new Random().NextDouble().ToDecimal() * 1000;
+            //    tmpListTUserInfo.Add(tmpTUserInfo);
+            //    //bllTUser.Register(tmpTUser, tmpTUserInfo);
+            //}
+            //bllTUser.Register(tmpListTUser, tmpListTUserInfo);
+
+            BWFramework.Model.TUser tmpTUser = bllTUser.GetModelByLoginNo("test1");
+            BWFramework.Model.TUserInfo tmpTUserInfo = bllTUserInfo.GetModelByCUserID(tmpTUser.CID);
+            //tmpTUserInfo.CSex = new Random().Next(3);
+            //tmpTUserInfo.CMoney = new Random().NextDouble().ToDecimal() * 1000;
+            bllTUserInfo.Update(tmpTUserInfo);
+        }
     }
 }

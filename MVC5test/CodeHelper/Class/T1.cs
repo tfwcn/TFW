@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common;
+using BWFramework.Common.AttributeEx;
 
 namespace CodeHelper
 {
     public class T1
     {
-        [DBEX.DBCol(PKey=true,CanRead=true,CanWrite=true)]
+        [DBCol(PKey=true,CanRead=true,CanWrite=true)]
         public string fid { get; set; }
         public string fremark { get; set; }
     }

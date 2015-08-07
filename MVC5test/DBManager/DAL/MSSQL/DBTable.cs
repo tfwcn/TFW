@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Common;
 using System.Data;
-using Common;
+using BWFramework.Common;
 
 namespace DBManager.DAL.MSSQL
 {
     class DBTable : DBManager.Interface.IDBTable
     {
-        private DBHelper.MSSQLHelper dbHelper = new DBHelper.MSSQLHelper();
+        private BWFramework.DBHelper.Base.DBHelperBase dbHelper = BWFramework.DBHelper.Base.DBHelperBase.GetDBHelper();
         #region IDBTable 成员
 
         public DBManager.DBTable GetTable(string CID)
@@ -61,7 +61,7 @@ namespace DBManager.DAL.MSSQL
 
         public void AddTable(DBManager.DBTable dbTable)
         {
-            using (DBHelper.DBHelperBase.DBTransactionHelper transaction = new DBHelper.DBHelperBase.DBTransactionHelper(dbHelper))
+            using (BWFramework.DBTransactionHelper.DBTransactionHelper transaction = dbHelper.CreateDBTransactionHelper())
             {
                 string sqlStr = @"create table [{0}]({1}
                                  CONSTRAINT [PK_{0}] PRIMARY KEY CLUSTERED 

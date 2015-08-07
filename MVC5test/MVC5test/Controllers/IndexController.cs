@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Runtime.Serialization;
-using Common;
+using BWFramework.Common;
 using System.Data.SqlClient;
 
 namespace MVC5test.Controllers
 {
     public class IndexController : BaseController
     {
-        private DAL.PostgreHelper bllPG = new DAL.PostgreHelper();
+        /*private DAL.PostgreHelper bllPG = new DAL.PostgreHelper();
         //
         // GET: /Index/
         public ActionResult Index()
@@ -227,6 +227,6 @@ namespace MVC5test.Controllers
             }
             string all = String.Format("{4} 1 {0}{1}{2} {3} {5}", s1, mid, s2, pagecount <= 1 ? "" : pagecount.ToString(), up, down);
             return all;
-        }
+        }*/
     }
 }

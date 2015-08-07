@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Common
+namespace BWFramework.Common
 {
     public class Encryption
     {

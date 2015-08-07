@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{53EDD569-65C5-456B-9BE0-AC77D8AD29D6}</ProjectGuid>
+    <ProjectGuid>{AA5CEEB7-77A8-45C8-A12A-12ECBA6D2E6F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DBManager</RootNamespace>
-    <AssemblyName>DBManager</AssemblyName>
+    <RootNamespace>BWFramework.Common</RootNamespace>
+    <AssemblyName>BWFramework.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,30 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\MSSQL\DBTable.cs" />
-    <Compile Include="DBMap.cs" />
-    <Compile Include="DBMapManager.cs" />
-    <Compile Include="DBTable.cs" />
-    <Compile Include="Interface\IDBTable.cs" />
+    <Compile Include="AttributeEx\DBColAttribute.cs" />
+    <Compile Include="AttributeEx\SummaryAttribute.cs" />
+    <Compile Include="DBEx.cs" />
+    <Compile Include="Encryption.cs" />
+    <Compile Include="Ex.cs" />
+    <Compile Include="GUIDHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DBTableCol.cs" />
-    <Compile Include="DBTableBase.cs" />
-    <Compile Include="DBTableManager.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BWFramework\Common\Common.csproj">
-      <Project>{aa5ceeb7-77a8-45c8-a12a-12ecba6d2e6f}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BWFramework\DBHelper\DBHelper.csproj">
-      <Project>{814efcf7-edad-4b6b-9526-ed2cc8040b95}</Project>
-      <Name>DBHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BWFramework\DBTransactionHelper\DBTransactionHelper.csproj">
-      <Project>{8113aace-1187-4d96-9575-0c7496722411}</Project>
-      <Name>DBTransactionHelper</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

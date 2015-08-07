@@ -7,8 +7,8 @@
     <ProjectGuid>{9ACC0041-C82B-4CB0-A162-C54E7200B0E5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAL</RootNamespace>
-    <AssemblyName>DAL</AssemblyName>
+    <RootNamespace>BWFramework.DAL</RootNamespace>
+    <AssemblyName>BWFramework.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,12 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Security">
-      <HintPath>..\DBHelper\DLL\Mono.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Npgsql">
-      <HintPath>..\DBHelper\DLL\Npgsql.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,8 +39,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PostgreHelper.cs" />
+    <Compile Include="Base\DALBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TUser.cs" />
+    <Compile Include="TUserInfo.cs" />
+    <Compile Include="TLog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{aa5ceeb7-77a8-45c8-a12a-12ecba6d2e6f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBHelper\DBHelper.csproj">
+      <Project>{814efcf7-edad-4b6b-9526-ed2cc8040b95}</Project>
+      <Name>DBHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBTransactionHelper\DBTransactionHelper.csproj">
+      <Project>{8113aace-1187-4d96-9575-0c7496722411}</Project>
+      <Name>DBTransactionHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{bf724f91-409b-4ddd-a849-d5fb276b16a4}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

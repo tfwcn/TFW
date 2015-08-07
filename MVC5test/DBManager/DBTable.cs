@@ -8,10 +8,10 @@ namespace DBManager
 {
     public class DBTable : DBTableBase
     {
-        [Common.DBEX.DBCol(PKey=true)]
+        [BWFramework.Common.AttributeEx.DBCol(PKey = true)]
         public string CID { get; set; }
         public string CName { get; set; }
-        [Common.DBEX.DBCol(CanRead=false,CanWrite=false)]
+        [BWFramework.Common.AttributeEx.DBCol(CanRead = false, CanWrite = false)]
         public List<DBTableCol> CCols { get; set; }
         public DBTable()
         {
