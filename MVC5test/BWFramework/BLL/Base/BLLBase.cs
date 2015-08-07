@@ -14,6 +14,10 @@ namespace BWFramework.BLL.Base
         protected BWFramework.DAL.Base.DALBase<T> dalObject;
         public BLLBase()
         {
+            if (!(this is TLog))//防止死循环
+            {
+                bllTLog = new TLog();
+            }
             foreach (var assemblies in AppDomain.CurrentDomain.GetAssemblies())
             {
                 if (assemblies.FullName.IndexOf("BWFramework.DAL,") == 0)
@@ -83,14 +87,17 @@ namespace BWFramework.BLL.Base
         /// </summary>
         protected virtual void UpdateLog(T model)
         {
-            if (model is Model.Base.ModelBase)
+            if (!(this is TLog))//防止死循环
             {
-                Model.Base.ModelBase modelBase = model as Model.Base.ModelBase;
-                Model.TLog modelTLog = bllTLog.GetUpdateLog(modelBase);
-                if (modelTLog != null)
+                if (model is Model.Base.ModelBase)
                 {
-                    bllTLog.Add(modelTLog);
-                    modelBase.SaveOldValues();//更新旧值
+                    Model.Base.ModelBase modelBase = model as Model.Base.ModelBase;
+                    Model.TLog modelTLog = bllTLog.GetUpdateLog(modelBase);
+                    if (modelTLog != null)
+                    {
+                        bllTLog.Add(modelTLog);
+                        modelBase.SaveOldValues();//更新旧值
+                    }
                 }
             }
         }

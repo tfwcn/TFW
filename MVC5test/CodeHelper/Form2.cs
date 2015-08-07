@@ -263,8 +263,8 @@ namespace CodeHelper
 
             BWFramework.Model.TUser tmpTUser = bllTUser.GetModelByLoginNo("test1");
             BWFramework.Model.TUserInfo tmpTUserInfo = bllTUserInfo.GetModelByCUserID(tmpTUser.CID);
-            //tmpTUserInfo.CSex = new Random().Next(3);
-            //tmpTUserInfo.CMoney = new Random().NextDouble().ToDecimal() * 1000;
+            tmpTUserInfo.CSex = new Random().Next(3);
+            tmpTUserInfo.CMoney = new Random().NextDouble().ToDecimal() * 1000;
             bllTUserInfo.Update(tmpTUserInfo);
         }
     }

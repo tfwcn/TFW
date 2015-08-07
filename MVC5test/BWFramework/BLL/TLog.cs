@@ -42,13 +42,5 @@ namespace BWFramework.BLL
         {
             return dalObject.GetModelsByCLogID(CLogID);
         }
-
-        /// <summary>
-        /// 更新完成后，记录更新日志
-        /// </summary>
-        protected override void UpdateLog(Model.TLog model)
-        {
-            //无日志
-        }
     }
 }

@@ -11,7 +11,7 @@ namespace BWFramework.BLL
         private BWFramework.DAL.TUserInfo dalObject;
         public TUserInfo()
         {
-            base.bllTLog = new TLog();
+            //base.bllTLog = new TLog();
             dalObject = base.dalObject as BWFramework.DAL.TUserInfo;
         }
         /// <summary>
